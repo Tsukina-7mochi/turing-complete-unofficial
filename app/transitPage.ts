@@ -15,7 +15,7 @@ const transitPage = async function(pageName: string, targetElement: HTMLElement,
       return;
     }
 
-    targetElement.innerHTML = `<h1>ページの読み込みに失敗しました</h1>`;
+    targetElement.innerHTML = `<h1>ページの読み込みに失敗しました</h1><p>🚧ページが見つからないか、準備中です🙇‍♂️</p>`;
   } else {
     targetElement.innerHTML = content;
   }

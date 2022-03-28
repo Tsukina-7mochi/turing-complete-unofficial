@@ -2,13 +2,16 @@ import axios from 'axios';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
+const linkNameReplacer = (name: string): string =>
+  name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
+
 const convertMarkdownContent = function(content_: string): string {
   let content = content_;
 
   // ターゲットなしリンクの書き換え
   content = content.replace(/\[[^[]+\](?![(])/g, (str: string) => {
     const name = str.slice(1, -1);
-    const linkName = name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
+    const linkName = linkNameReplacer(name);
 
     // return `${str}(${linkName})`;
     return `<a href="#${linkName}" class="page-link" data-target=${linkName}>${name}</a>`;
@@ -55,3 +58,7 @@ const requestPage = async function(pageName: string): Promise<string | null> {
 }
 
 export default requestPage;
+
+export {
+  linkNameReplacer
+}

@@ -1,6 +1,7 @@
 import './style/main.scss';
 import transitPage from './transitPage';
 import loadMenu from './menu';
+import search from './search';
 
 window.addEventListener('load', () => {
   // load menu
@@ -15,15 +16,41 @@ window.addEventListener('load', () => {
   }
 
   const transit = function(fallbackPageName?: string) {
-    const pageToTransit = (location.hash !== '' ? location.hash.slice(1) : 'index');
-    transitPage(pageToTransit, elMain, fallbackPageName);
+    if(window.location.search !== '') {
+      search(window.location.search.slice(1), elMain);
+    } else {
+      const pageToTransit = (location.hash !== '' ? location.hash.slice(1) : 'index');
+      transitPage(pageToTransit, elMain, fallbackPageName);
+    }
   }
 
   // transit to index page
+
   transit('index');
 
   // history移動の検知
   window.addEventListener('popstate', () => {
     transit();
   });
+
+  // 検索
+  const elSearchInput = document.querySelector<HTMLInputElement>('body > header > .search input');
+  const elSearchButton = document.querySelector<HTMLButtonElement>('body > header > .search button');
+  if(!elSearchInput) {
+    console.error('search input is not found');
+  } else if(!elSearchButton) {
+    console.error('search button is not found');
+  } else {
+    elSearchButton.addEventListener('click', () => {
+      window.history.pushState({}, '', `/?${window.encodeURI(elSearchInput.value)}`);
+      transit();
+    });
+    elSearchInput.addEventListener('keydown', (e) => {
+      if(e.code === 'Enter') {
+        window.history.pushState({}, '', `/?${window.encodeURI(elSearchInput.value)}`);
+        elSearchInput.blur();
+        transit();
+      }
+    });
+  }
 });
