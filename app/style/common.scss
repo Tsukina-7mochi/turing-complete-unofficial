@@ -1,0 +1,23 @@
+body {
+  padding: 0;
+  margin: 0;
+
+  background-color: $c-bg;
+  color: $c-text;
+
+  // 文字の大きさ
+  font-size: 14px;
+  line-height: 1.5em;
+  @media screen and (min-width: $screen-width-small) {
+    font-size: 20px;
+    line-height: 1em;
+  }
+}
+
+a {
+  color: $c-link-text;
+
+  &:visited {
+    color: $c-link-text-visited;
+  }
+}
