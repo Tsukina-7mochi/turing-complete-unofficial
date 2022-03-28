@@ -1,0 +1,53 @@
+$c-def-highlight: #E49F44;
+$c-def-highlight2: #3D99CC;
+$c-def-highlight3: #C54D5E;
+$c-def-white: #FFFFFF;
+$c-def-black: #2E2B3C;
+$c-def-gray: #353A4E;
+$c-def-gray2: #3F445E;
+
+
+$c-bg: $c-def-gray;
+$c-bg-hover: lighten($c-def-gray, 5);
+$c-bg-active: lighten($c-def-gray, 10);
+$c-bg-header: $c-def-black;
+$c-bg-header-hover: lighten($c-def-black, 5);
+$c-bg-header-active: lighten($c-def-black, 10);
+$c-text: $c-def-white;
+$c-link-text: $c-def-highlight;
+$c-link-text-visited: $c-def-highlight2;
+
+$radius: 6px;
+$shadow-normal: 0px 0px 5px rgba($c-def-black, 50%);
+
+$screen-width-small: 786px;
+$screen-width-medium: 1024px;
+$screen-width-large: 1600px;
+
+@mixin scrollbar {
+  $width-half: 5px;
+
+  &::-webkit-scrollbar {
+    width: $width-half * 2;
+    height: $width-half * 2;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: $width-half * 2;
+  }
+}
+@mixin insertImageBefore($width, $height, $url) {
+  &::before {
+    display: inline-block;
+    content: "";
+    width: $width;
+    height: $height;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: $url;
+    @content;
+  }
+}

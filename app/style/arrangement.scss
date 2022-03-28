@@ -1,0 +1,61 @@
+body {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+
+  $header-height: 45px;
+
+  // 標準では2カラム
+  grid-template-columns: ($screen-width-medium * 0.3) 1fr;
+  grid-template-rows: $header-height 1fr;
+
+  @media screen and (min-width: $screen-width-large) {
+    grid-template-columns: ($screen-width-large * 0.3) 1fr;
+    grid-template-rows: $header-height 1fr;
+  }
+
+  > header {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+  > div.menu {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    overflow-y: scroll;
+    @include scrollbar;
+  }
+  > main {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    overflow-y: scroll;
+    @include scrollbar;
+  }
+
+  // 幅がscreen-width-medium以下のデバイスでは1カラム
+  @media screen and (max-width: $screen-width-medium) {
+    grid-template-columns: 1fr;
+    grid-template-rows: $header-height 1fr;
+    height: auto;
+
+    > header {
+      grid-row: 1 / 2;
+    }
+    > div.menu {
+      display: none;
+      position: absolute;
+      top: $header-height;
+      left: 0;
+      max-width: 100vw;
+      height: 100%;
+      overflow-y: visible;
+
+      &.shown {
+        display: block;
+      }
+    }
+    > main {
+      grid-row: 2 / 3;
+      overflow-y: visible;
+    }
+  }
+}

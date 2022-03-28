@@ -1,0 +1,64 @@
+body > div.menu {
+  padding: 0.3em;
+  font-size: 0.9em;
+  background-color: $c-bg;
+
+  ul {
+    padding: 0 0 0 1em;
+
+    li {
+      list-style: none;
+      line-height: 1.25em;
+
+      @include insertImageBefore(0.8em, 0.8em, url('../icons/enabled.svg')) {
+        margin-right: 0.2em;
+      }
+    }
+  }
+
+  h2 {
+    border-left: 6px solid $c-def-white;
+    margin: 0.2em 0;
+    padding: 0.5em 0;
+    padding-left: 0.4em;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0.4em 0;
+  }
+
+  .collapsible-controller {
+    &:hover {
+      background-color: $c-bg-hover;
+    }
+    &:active {
+      background-color: $c-bg-active;
+    }
+
+    &.collapsed {
+      > .expand {
+        display: default;
+      }
+      > .collapse {
+        display: none;
+      }
+
+      & + .collapsible {
+        display: none;
+      }
+    }
+    &.expanded {
+      > .expand {
+        display: none;
+      }
+      > .collapse {
+        display: default;
+      }
+
+      & + .collapsible {
+        display: default;
+      }
+    }
+  }
+}
