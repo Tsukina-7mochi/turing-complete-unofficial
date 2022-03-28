@@ -22,7 +22,7 @@ const convertMarkdownContent = function(content_: string): string {
 
 const requestPage = async function(pageName: string): Promise<string | null> {
   try {
-    const response = await axios.get(`/pages/${pageName}.md`);
+    const response = await axios.get(`${window.location.href}/pages/${pageName}.md`);
     // console.log(response);
 
     const rawContent = <string> response.data;

@@ -3,7 +3,7 @@ import { linkNameReplacer } from './requestPage';
 import Fuse from 'fuse.js'
 
 const getMenu = async function(): Promise<string> {
-  const response = await axios.get(`/pages/menu.md`);
+  const response = await axios.get(`${window.location.href}/pages/menu.md`);
   return response.data;
 }
 
