@@ -36,9 +36,13 @@ const renderSearchResult = function(searchText: string, targetElement: HTMLEleme
   }
 
   // content matched
+  const contentMatchedH2 = document.createElement('h2');
+  contentMatchedH2.textContent = '内容が一致';
+  targetElement.appendChild(contentMatchedH2);
 
-  // const contentMatchedH2 = document.createElement('h2');
-  // contentMatchedH2.textContent = '内容が一致';
+  const article = document.createElement('article');
+  article.textContent = '実装中です🚧';
+  targetElement.appendChild(article);
 }
 
 const search = async function(searchText: string, targetElement: HTMLElement): Promise<void> {
