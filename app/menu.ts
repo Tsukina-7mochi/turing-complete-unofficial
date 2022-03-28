@@ -48,7 +48,13 @@ const loadMenu = async function(): Promise<void> {
   } else {
     elMenu.innerHTML = menu;
 
+    // 折りたたみの登録
     registerExpansion(elMenu);
+
+    // メニュー表示ボタン
+    document.querySelector('body > header > div.menu-button')?.addEventListener('click', () => {
+      elMenu.classList.toggle('shown');
+    });
   }
 }
 

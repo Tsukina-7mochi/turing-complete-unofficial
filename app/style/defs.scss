@@ -8,6 +8,8 @@ $c-def-gray2: #3F445E;
 
 
 $c-bg: $c-def-gray;
+$c-bg-hover: lighten($c-def-gray, 5);
+$c-bg-active: lighten($c-def-gray, 10);
 $c-bg-header: $c-def-black;
 $c-bg-header-hover: lighten($c-def-black, 5);
 $c-bg-header-active: lighten($c-def-black, 10);

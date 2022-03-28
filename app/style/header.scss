@@ -5,10 +5,14 @@ body > header {
   align-items: center;
 
   div.menu-button {
+    display: none;
+    @media screen and (max-width: $screen-width-medium) {
+      display: flex;
+    }
+
     width: 2em;
     text-align: center;
     height: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -26,5 +30,10 @@ body > header {
     font-size: 1.5em;
     flex-grow: 1;
     margin-left: 0.5em;
+
+    > a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 }

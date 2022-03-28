@@ -1,6 +1,7 @@
 body > div.menu {
   padding: 0.3em;
   font-size: 0.9em;
+  background-color: $c-bg;
 
   ul {
     padding: 0 0 0 1em;
@@ -17,31 +18,47 @@ body > div.menu {
 
   h2 {
     border-left: 6px solid $c-def-white;
-    padding-left: 0.5em;
+    margin: 0.2em 0;
+    padding: 0.5em 0;
+    padding-left: 0.4em;
   }
 
-  .collapsible-controller.collapsed {
-    > .expand {
-      display: default;
-    }
-    > .collapse {
-      display: none;
-    }
-
-    & + .collapsible {
-      display: none;
-    }
+  h3 {
+    margin: 0;
+    padding: 0.4em 0;
   }
-  .collapsible-controller.expanded {
-    > .expand {
-      display: none;
+
+  .collapsible-controller {
+    &:hover {
+      background-color: $c-bg-hover;
     }
-    > .collapse {
-      display: default;
+    &:active {
+      background-color: $c-bg-active;
     }
 
-    & + .collapsible {
-      display: default;
+    &.collapsed {
+      > .expand {
+        display: default;
+      }
+      > .collapse {
+        display: none;
+      }
+
+      & + .collapsible {
+        display: none;
+      }
+    }
+    &.expanded {
+      > .expand {
+        display: none;
+      }
+      > .collapse {
+        display: default;
+      }
+
+      & + .collapsible {
+        display: default;
+      }
     }
   }
 }
