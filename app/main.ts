@@ -1,21 +1,6 @@
-import requestPage from './requestPage';
 import './style/main.scss';
 import transitPage from './transitPage';
-
-const loadMenu = async function(): Promise<void> {
-  const elMenu = document.querySelector('div.menu');
-  if(elMenu === null) {
-    console.error('menu element (div.menu) is not exist');
-    return;
-  }
-
-  const menu = await requestPage('menu');
-  if(menu === null) {
-    console.error('Failed to load menu');
-  }
-
-  elMenu.innerHTML = menu ?? 'メニューの読み込みに失敗';
-}
+import loadMenu from './menu';
 
 window.addEventListener('load', () => {
   // load menu

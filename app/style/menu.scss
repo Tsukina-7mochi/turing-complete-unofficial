@@ -1,12 +1,47 @@
 body > div.menu {
   padding: 0.3em;
+  font-size: 0.9em;
 
   ul {
-    padding: 0;
+    padding: 0 0 0 1em;
 
     li {
       list-style: none;
-      margin: 0.2em 0;
+      line-height: 1.25em;
+
+      @include insertImageBefore(0.8em, 0.8em, url('../icons/enabled.svg')) {
+        margin-right: 0.2em;
+      }
+    }
+  }
+
+  h2 {
+    border-left: 6px solid $c-def-white;
+    padding-left: 0.5em;
+  }
+
+  .collapsible-controller.collapsed {
+    > .expand {
+      display: default;
+    }
+    > .collapse {
+      display: none;
+    }
+
+    & + .collapsible {
+      display: none;
+    }
+  }
+  .collapsible-controller.expanded {
+    > .expand {
+      display: none;
+    }
+    > .collapse {
+      display: default;
+    }
+
+    & + .collapsible {
+      display: default;
     }
   }
 }
