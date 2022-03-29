@@ -4,6 +4,11 @@ body {
 
   background-color: $c-bg;
   color: $c-text;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arvo', 'Zen Kaku Gothic New', sans-serif;
+  }
 
   // 文字の大きさ
   font-size: 14px;

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+import path from 'path';
 
 const linkNameReplacer = (name: string): string =>
   name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
@@ -22,7 +23,9 @@ const convertMarkdownContent = function(content_: string): string {
 
 const requestPage = async function(pageName: string): Promise<string | null> {
   try {
-    const response = await axios.get(`${window.location.href}/pages/${pageName}.md`);
+    const response = await axios.get(`pages/${pageName}.md`, {
+      baseURL: window.location.origin + window.location.pathname
+    });
     // console.log(response);
 
     const rawContent = <string> response.data;
