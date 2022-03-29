@@ -18,6 +18,19 @@ const transitPage = async function(pageName: string, targetElement: HTMLElement,
     targetElement.innerHTML = `<h1>ページの読み込みに失敗しました</h1><p>🚧ページが見つからないか、準備中です🙇‍♂️</p>`;
   } else {
     targetElement.innerHTML = content;
+
+    // スポイラーのロジックを追加
+    document.querySelectorAll('.spoiler-controller').forEach((controller) => {
+      controller.addEventListener('click', () => {
+        controller.classList.toggle('expanded');
+
+        if(controller.classList.contains('expanded')) {
+          controller.innerHTML = '&#xE5CF;開く';
+        } else {
+          controller.innerHTML = '&#xE5CE;隠す';
+        }
+      });
+    });
   }
 
   if(pageName === 'index') {

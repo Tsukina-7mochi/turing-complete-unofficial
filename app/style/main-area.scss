@@ -12,4 +12,89 @@ body > main {
     margin: 0;
     border-radius: $radius;
   }
+
+  // 文中の `これ`
+  :not(pre) > code {
+    display: inline-block;
+    background-color: $c-bg-header;
+    border-radius: $radius;
+    font: inherit;
+    padding: 0 0.2em;
+  }
+
+  // スポイラー
+  .spoiler {
+    display: none;
+  }
+  .spoiler-controller.expanded + .spoiler {
+    display: initial;
+  }
+  .spoiler-controller {
+    height: 1.5em;
+    width: 100%;
+    background-color: $c-bg;
+
+    &:hover {
+      background-color: $c-bg-hover;
+    }
+    &:active {
+      background-color: $c-bg-active;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+
+    tbody {
+      tr {
+        &:nth-child(2n+1) {
+          background-color: $c-bg-hover;
+        }
+
+        td {
+          padding: 0.5em;
+
+          &:not(:first-child) {
+            border-left: 2px solid $c-text;
+          }
+        }
+
+        &:not(:first-child) td {
+          border-top: 2px solid $c-text;
+        }
+      }
+    }
+  }
+
+  // 真理値表
+  table.truth {
+    tbody {
+      tr {
+        td {
+          border-radius: $radius;
+          text-align: center;
+          border: none;
+        }
+
+        td:first-child {
+          background-color: #E49F44;
+        }
+        td.T {
+          background-color: #5F9F5F;
+        }
+        td.F {
+          background-color: #DF5F5F;
+        }
+        td._ {
+          background-color: #8F8F8F;
+        }
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  // 真理値表
 }
