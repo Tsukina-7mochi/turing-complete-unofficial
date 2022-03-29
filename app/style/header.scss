@@ -3,6 +3,7 @@ body > header {
   color: $c-text;
   display: flex;
   align-items: center;
+  overflow-x: hidden;
 
   div.menu-button {
     display: none;
@@ -28,28 +29,34 @@ body > header {
     font-family: 'Arvo', 'Zen Kaku Gothic New', sans-serif;
     color: $c-def-highlight3;
     font-size: 1.5em;
-    flex-grow: 1;
     margin-left: 0.5em;
 
     > a {
       color: inherit;
       text-decoration: none;
     }
+
+    @media screen and (max-width: $screen-width-medium) {
+      display: none;
+    }
   }
 
   div.search {
     display: flex;
     align-items: center;
+    justify-content: right;
     height: 100%;
+    flex-grow: 1;
 
     input {
       border: 1px solid $c-def-white;
       border-radius: $radius;
-      width: 15em;
+      max-width: 15em;
       background-color: $c-bg-header;
       color: $c-text;
       padding: 0 0.5em;
       font-size: 1.3em;
+      flex-grow: 1;
 
       &:hover {
         background-color: $c-bg-header-hover;
