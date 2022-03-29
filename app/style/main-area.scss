@@ -4,4 +4,11 @@ body > main {
   h1 {
     margin: 1.5em 0;
   }
+
+  blockquote {
+    background-color: $c-bg-hover;
+    padding: 0.25em 1.25em;
+    margin: 0;
+    border-radius: $radius;
+  }
 }
