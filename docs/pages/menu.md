@@ -31,9 +31,9 @@
 - [Adding Bytes]
 - [Negative Numbers]
 - [Switch]
-- [Signed negator]
-- [1 bit decoder]
-- [3 bit decoder]
+- [Signed Negator]
+- [1 Bit Decoder]
+- [3 Bit Decoder]
 - [One Way]
 
 ### MEMORY
