@@ -42,7 +42,7 @@ const processMarkdown = function(content_: string, pageName: string): string {
           + dependencies.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join('')
           + '</ul><h2>このレベルを前提とするレベル</h2><ul>'
           + dependents.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join('')
-          + '</ul>';
+          + '</ul>\n\n';
 
         const insertPos = content.match(/^##/m)?.index;
         if(insertPos) {

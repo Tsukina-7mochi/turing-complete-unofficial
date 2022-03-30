@@ -1,7 +1,5 @@
 # NOR Gate
 
-`#レベル`
-
 ## 概要
 
 NORゲートを作成する問題です。
@@ -13,5 +11,10 @@ NORゲートを作成する問題です。
 
 ## 解答
 
+<div class="spoiler">
+
 NOR演算とOR演算は結果が逆となります。したがってOR演算の結果をNOT演算に入力すれば良いです。
-![](https://gyazo.com/5ce4d0c65f37e46e1da72e08f56a6213)
+
+![](https://gyazo.com/5ce4d0c65f37e46e1da72e08f56a6213.png)
+
+</div>

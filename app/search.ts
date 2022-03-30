@@ -11,7 +11,7 @@ const getMenu = async function(): Promise<string> {
 
 const renderSearchResult = function(searchText: string, targetElement: HTMLElement, titleMatched_: Promise<Fuse.FuseResult<string>[]>): void {
   const h1 = document.createElement('h1');
-  h1.textContent = `${searchText} の検索結果`;
+  h1.textContent = `「${window.decodeURIComponent(searchText)}」の検索結果`;
   targetElement.appendChild(h1);
 
   // title matched
@@ -27,10 +27,7 @@ const renderSearchResult = function(searchText: string, targetElement: HTMLEleme
     titleMatchedSection.textContent = '';
 
     if(titleMatched.length === 0) {
-      const article = document.createElement('article');
-      article.textContent = '一致するものはありませんでした。🐬';
-
-      targetElement.appendChild(article);
+      titleMatchedSection.textContent = '一致するものはありませんでした。🐬';
     } else {
       titleMatched.forEach((result) => {
         const article = document.createElement('article');
