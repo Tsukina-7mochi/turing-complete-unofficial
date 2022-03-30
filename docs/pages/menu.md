@@ -113,7 +113,7 @@
 
 - [4 NAND = XOR]
 - [Condition 6]
-- [Turing Computer]
+- [Turing Complete]
 - [Helperbot]
 - [4 Component Full Adder]
 - [Fast Adder]
