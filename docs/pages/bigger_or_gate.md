@@ -1,7 +1,5 @@
 # Bigger OR Gate
 
-`#レベル`
-
 ## 概要
 
 3入力の [ORゲート](or_gate) を構成する問題です。
@@ -12,4 +10,8 @@
 
 ## 解答
 
+<div class="spoiler">
+
 ![](https://gyazo.com/877961937d3a0a308de4bbb3c123c9e6.png)
+
+</div>

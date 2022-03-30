@@ -1,7 +1,5 @@
 # OR Gate
 
-`#レベル`
-
 ## 概要
 
 ORゲートを作成する問題です。
@@ -23,6 +21,7 @@ T, T, T
 ## 解答
 
 <div class="spoiler">
+
 NAND演算の [真理値表](truth_table) は次のようになっていました。
 
 ```truth_table
@@ -46,4 +45,5 @@ T, T, T
 これはOR演算の [真理値表](truth_table) と一致していることがわかります。
 
 ![](https://gyazo.com/314eb63d5ea88fb8e0a929b782f52472.png)
+
 </div>

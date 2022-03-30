@@ -1,7 +1,5 @@
 # Second Tick
 
-`#レベル`
-
 ## 概要
 
 入力1がTrueで入力2がFalseのときにTrueを出力するゲートを構成します (論理式としては論理包含 $(\lnot I_2) \to I_1$ に相当します) 。
@@ -20,4 +18,8 @@ T, T, F
 
 ## 解答
 
+<div class="spoiler">
+
 ![](https://gyazo.com/434bc41ce4e6f376b5564a15fc948c0e.png)
+
+</div>

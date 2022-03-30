@@ -1,7 +1,5 @@
 # AND Gate
 
-`#レベル`
-
 ## 概要
 
 ANDゲートを作成する問題です。
@@ -23,6 +21,8 @@ T, T, T
 
 ## 解答
 
+<div class="spoiler">
+
 一方、NAND演算の [真理値表](#truth_table) は次のようになっていました。
 
 ```truth_table
@@ -38,3 +38,5 @@ T, T, F
 したがってNANDゲートの出力をNOTゲートに入力すれば良いです。
 
 ![](https://gyazo.com/0c72f4ed1ceb676c2f50b682310d8fba.png)
+
+</div>
