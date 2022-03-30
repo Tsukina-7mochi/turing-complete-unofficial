@@ -1,12 +1,58 @@
 import axios from 'axios';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+import JSON5 from 'json5';
 
 const linkNameReplacer = (name: string): string =>
   name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
 
-const processMarkdown = function(content_: string): string {
+let levelInfo: any = null;
+axios.get(`level_info.json5`, {
+  baseURL: window.location.origin + window.location.pathname
+}).then((response) => {
+  levelInfo = JSON5.parse<any>(response.data);
+}).catch((err) => {
+  console.error('Failed to fetch or parse level info', err);
+  return { dependencies: {} }
+});
+
+const processMarkdown = function(content_: string, pageName: string): string {
   let content = content_;
+
+  // レベルページの場合、依存関係の情報を追加
+
+  if(levelInfo !== null) {
+    if(typeof levelInfo?.dependencies === 'object') {
+      if(levelInfo.dependencies[pageName]) {
+        // 依存関係の情報を追加
+        const dependencies = <string[]> levelInfo.dependencies[pageName];
+        const dependents: string[] = [];
+
+        for(const levelName in levelInfo.dependencies) {
+          if(!Array.isArray(levelInfo.dependencies[levelName])) {
+            throw Error(`In level info, levelInfo.dependencies[${levelName}] must be array`);
+          }
+          if(levelInfo.dependencies[levelName].map(linkNameReplacer).includes(pageName)) {
+            dependents.push(levelName);
+          }
+        }
+
+        const stringToInsert =
+            '<h2>前提レベル</h2><ul>'
+          + dependencies.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join('')
+          + '</ul><h2>このレベルを前提とするレベル</h2><ul>'
+          + dependents.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join('')
+          + '</ul>';
+
+        const insertPos = content.match(/^##/m)?.index;
+        if(insertPos) {
+          content = content.slice(0, insertPos) + stringToInsert + content.slice(insertPos);
+        } else {
+          console.error('No place to insert dependency information');
+        }
+      }
+    }
+  }
 
   // ターゲットなしリンクの書き換え
   content = content.replace(/\[[^[]+\](?![(])/g, (str: string) => {
@@ -14,7 +60,7 @@ const processMarkdown = function(content_: string): string {
     const linkName = linkNameReplacer(name);
 
     // return `${str}(${linkName})`;
-    return `<a href="#${linkName}" class="page-link" data-target=${linkName}>${name}</a>`;
+    return `<a href="#${linkName}" class="page-link">${name}</a>`;
   });
 
 
@@ -81,7 +127,7 @@ const requestPage = async function(pageName: string): Promise<string | null> {
     const rawContent = <string> response.data;
     // console.log(rawContent);
 
-    const content = processMarkdown(rawContent);
+    const content = processMarkdown(rawContent, pageName);
     // console.log(content);
 
     const HTMLContent = await <Promise<string>> new Promise((resolve, reject) => {
