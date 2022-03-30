@@ -22,7 +22,7 @@ T, T, T
 
 <div class="spoiler">
 
-NAND演算の [真理値表](truth_table) は次のようになっていました。
+NAND演算の [真理値表](#truth_table) は次のようになっていました。
 
 ```truth_table
 入力1, 入力2, 出力
@@ -42,7 +42,7 @@ F, T, T
 T, T, T
 ```
 
-これはOR演算の [真理値表](truth_table) と一致していることがわかります。
+これはOR演算の [真理値表](#truth_table) と一致していることがわかります。
 
 ![](https://gyazo.com/314eb63d5ea88fb8e0a929b782f52472.png)
 
