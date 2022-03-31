@@ -33,9 +33,7 @@ body {
 
   // 幅がscreen-width-medium以下のデバイスでは1カラム
   @media screen and (max-width: $screen-width-medium) {
-    grid-template-columns: 1fr;
-    grid-template-rows: $header-height 1fr;
-    height: auto;
+    display: block;
 
     > header {
       grid-row: 1 / 2;
@@ -45,9 +43,8 @@ body {
       position: absolute;
       top: $header-height;
       left: 0;
-      max-width: 100vw;
-      height: 100%;
-      overflow-y: visible;
+      overflow-y: unset;
+      @include deleteScrollBar;
 
       &.shown {
         display: block;
@@ -55,7 +52,7 @@ body {
     }
     > main {
       grid-row: 2 / 3;
-      overflow-y: visible;
+      overflow-y: unset;
     }
   }
 }

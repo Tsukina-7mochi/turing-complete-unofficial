@@ -5,17 +5,21 @@ body {
   background-color: $c-bg;
   color: $c-text;
   font-family: 'Zen Kaku Gothic New', sans-serif;
+  overflow-x: hidden;
+  width: 100vw;
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Arvo', 'Zen Kaku Gothic New', sans-serif;
   }
 
   // 文字の大きさ
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.5em;
-  @media screen and (min-width: $screen-width-small) {
-    font-size: 20px;
-    line-height: 1em;
+  @media screen and (max-width: $screen-width-medium) {
+    line-height: 1.35em;
+  }
+  @media screen and (max-width: $screen-width-small) {
+    line-height: 1.2em;
   }
 }
 

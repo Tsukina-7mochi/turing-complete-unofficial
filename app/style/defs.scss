@@ -39,6 +39,14 @@ $screen-width-large: 1600px;
     border-radius: $width-half * 2;
   }
 }
+
+@mixin deleteScrollBar {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
 @mixin insertImageBefore($width, $height, $url) {
   &::before {
     display: inline-block;
