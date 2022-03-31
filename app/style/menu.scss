@@ -1,7 +1,11 @@
 body > div.menu {
   padding: 0.3em;
-  font-size: 0.9em;
   background-color: $c-bg;
+
+  @media screen and (max-width: $screen-width-medium) {
+    font-size: 1.25em;
+    line-height: 1.5em;
+  }
 
   ul {
     padding: 0 0 0 1em;
@@ -38,7 +42,7 @@ body > div.menu {
 
     &.collapsed {
       > .expand {
-        display: default;
+        display: inline-block;
       }
       > .collapse {
         display: none;
@@ -53,11 +57,11 @@ body > div.menu {
         display: none;
       }
       > .collapse {
-        display: default;
+        display: inline-block;
       }
 
       & + .collapsible {
-        display: default;
+        display: inline-block;
       }
     }
   }

@@ -42,47 +42,52 @@ body > header {
   }
 
   div.search {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    height: 100%;
     flex-grow: 1;
 
-    input {
-      border: 1px solid $c-def-white;
-      border-radius: $radius;
-      max-width: 15em;
-      background-color: $c-bg-header;
-      color: $c-text;
-      padding: 0 0.5em;
-      font-size: 1.3em;
-      flex-grow: 1;
-
-      &:hover {
-        background-color: $c-bg-header-hover;
-      }
-      &:focus {
-        background-color: $c-text;
-        color: $c-bg-header;
-      }
-    }
-
-    button {
-      display: none;
-    }
-
-    label {
+    form {
       display: flex;
       align-items: center;
-      padding: 0 0.25em;
+      justify-content: right;
       height: 100%;
-      background-color: $c-bg-header;
 
-      &:hover {
-        background-color: $c-bg-header-hover;
+      input {
+        display: block;
+        border: 1px solid $c-def-white;
+        border-radius: $radius;
+        width: 1em;
+        max-width: 15em;
+        background-color: $c-bg-header;
+        color: $c-text;
+        padding: 0 0.5em;
+        font-size: 1.3em;
+        flex-grow: 1;
+
+        &:hover {
+          background-color: $c-bg-header-hover;
+        }
+        &:focus {
+          background-color: $c-text;
+          color: $c-bg-header;
+        }
       }
-      &:active {
-        background-color: $c-bg-header-active;
+
+      button {
+        display: none;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        padding: 0 0.25em;
+        height: 100%;
+        background-color: $c-bg-header;
+
+        &:hover {
+          background-color: $c-bg-header-hover;
+        }
+        &:active {
+          background-color: $c-bg-header-active;
+        }
       }
     }
   }

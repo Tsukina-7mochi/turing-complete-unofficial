@@ -27,6 +27,8 @@ window.addEventListener('load', () => {
       const pageToTransit = (location.hash !== '' ? location.hash.slice(1) : 'index');
       transitPage(pageToTransit, elMain, fallbackPageName);
     }
+
+    document.querySelector('body > div.menu')?.classList?.remove('shown');
   }
 
   // transit to index page
@@ -39,23 +41,19 @@ window.addEventListener('load', () => {
   });
 
   // 検索
-  const elSearchInput = document.querySelector<HTMLInputElement>('body > header > .search input');
-  const elSearchButton = document.querySelector<HTMLButtonElement>('body > header > .search button');
-  if(!elSearchInput) {
+  const elSearchForm = document.querySelector<HTMLFormElement>('body > header > .search form');
+  const elSearchInput = elSearchForm?.querySelector<HTMLInputElement>('input');
+  if(!elSearchForm) {
+    console.error('search form is not found');
+  } else if(!elSearchInput){
     console.error('search input is not found');
-  } else if(!elSearchButton) {
-    console.error('search button is not found');
   } else {
-    elSearchButton.addEventListener('click', () => {
+    elSearchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
       window.history.pushState({}, '', `${window.location.origin + window.location.pathname}?${window.encodeURI(elSearchInput.value)}`);
       transit();
-    });
-    elSearchInput.addEventListener('keydown', (e) => {
-      if(e.code === 'Enter') {
-        window.history.pushState({}, '', `${window.location.origin + window.location.pathname}?${window.encodeURI(elSearchInput.value)}`);
-        elSearchInput.blur();
-        transit();
-      }
     });
   }
 });
