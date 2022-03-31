@@ -4,7 +4,7 @@
 
 ## 概要
 
-[Turing Complete](turingcomplete.game) の日本語解説・攻略を掲載するページです。
+[Turing Complete](https://turingcomplete.game) の日本語解説・攻略を掲載するページです。
 このレポジトリには攻略内容自体とそれを提供するWebアプリケーションの両方が含まれます。
 `./app` ディレクトリ以下がアプリケーションで、バンドル結果は `docs/app` 以下に生成されます。
 `./docs` ディレクトリがGitHub Pagesによりホスティングされるディレクトリのルートで、
