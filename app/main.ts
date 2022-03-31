@@ -15,7 +15,12 @@ window.addEventListener('load', () => {
     throw Error('Main element is not found!');
   }
 
-  const transit = function(fallbackPageName?: string) {
+  const transit = function(fallbackPageName?: string): void {
+    if(window.location.search !== '' && window.location.hash !== '') {
+      // console.log(window.location.origin + window.location.pathname + window.location.hash);
+      window.history.replaceState({}, '', window.location.origin + window.location.pathname + window.location.hash);
+    }
+
     if(window.location.search !== '') {
       search(window.location.search.slice(1), elMain);
     } else {
@@ -42,12 +47,12 @@ window.addEventListener('load', () => {
     console.error('search button is not found');
   } else {
     elSearchButton.addEventListener('click', () => {
-      window.history.pushState({}, '', `/?${window.encodeURI(elSearchInput.value)}`);
+      window.history.pushState({}, '', `${window.location.origin + window.location.pathname}?${window.encodeURI(elSearchInput.value)}`);
       transit();
     });
     elSearchInput.addEventListener('keydown', (e) => {
       if(e.code === 'Enter') {
-        window.history.pushState({}, '', `/?${window.encodeURI(elSearchInput.value)}`);
+        window.history.pushState({}, '', `${window.location.origin + window.location.pathname}?${window.encodeURI(elSearchInput.value)}`);
         elSearchInput.blur();
         transit();
       }
