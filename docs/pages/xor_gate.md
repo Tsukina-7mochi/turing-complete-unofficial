@@ -18,6 +18,7 @@ T, T, F
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 例として、入力1が <span class="T">True</span> で入力2が <span class="F">False</span>のとき、

@@ -10,6 +10,7 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 ![](https://gyazo.com/b9799018ef80d2a0093ac1c57c4cefe1.png)

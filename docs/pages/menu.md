@@ -1,5 +1,7 @@
 [トップページ](#)
 
+[ライセンス](https://github.com/Tsukina-7mochi/turing-complete-unofficial/blob/9a1baa0d5011e5aed55121634f8d894c1722b92e/LICENSE)
+
 ## レベル解説
 
 ### BASIC LOGIC

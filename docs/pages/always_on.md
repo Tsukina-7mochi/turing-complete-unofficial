@@ -11,7 +11,9 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
+
 いろいろな構成方法がありますが、 [NANDゲート](#nand_gate) を利用した方法を示します。
 
 ![](https://gyazo.com/515729380f682d91cc41b109ea1f0bd1.png)

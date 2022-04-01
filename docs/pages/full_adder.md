@@ -22,6 +22,7 @@ FAが行う演算を列挙すると次のようになります。
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 HAの時と同様にSumとCarryについて [真理値表](#truth_table) を書くと次のようになります。

@@ -11,6 +11,7 @@ NORゲートを作成する問題です。
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 NOR演算とOR演算は結果が逆となります。したがってOR演算の結果をNOT演算に入力すれば良いです。

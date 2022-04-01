@@ -6,6 +6,7 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 すべてのビットを反転した値に1を加算したものを出力すればよいです。
