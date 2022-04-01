@@ -38,13 +38,15 @@ const processMarkdown = function(content_: string, pageName: string): string {
           }
         }
 
-        const stringToInsert =
-            '<h2>前提レベル</h2><ul>'
-          + dependencies.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join('')
-          + '</ul><h2>このレベルを前提とするレベル</h2><ul>'
-          + dependents.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join('')
-          + '</ul>\n\n';
+        const stringToInsert = [
+          '<h2>前提レベル</h2><ul>',
+          dependencies.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
+          '</ul><h2>このレベルを前提とするレベル</h2><ul>',
+          dependents.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
+          '</ul>\n\n',
+        ].join('');
 
+        // 最初のh2の前に挿入
         const insertPos = content.match(/^##/m)?.index;
         if(insertPos) {
           content = content.slice(0, insertPos) + stringToInsert + content.slice(insertPos);
@@ -118,6 +120,48 @@ const processMarkdown = function(content_: string, pageName: string): string {
 //   return doc.body.innerHTML;
 // }
 
+const buildTruthTable = function(content: string): string {
+  const cells = content.trim().split('\n')
+    .map(line => {
+      return line.trim().split(',');
+    });
+
+  const tableHeight = ((): number => {
+    let height = 0;
+    for(const row of cells) {
+      if(height < row.length) {
+        height = row.length;
+      }
+    }
+
+    return height;
+  })();
+
+  // transpose cells
+  const transposedCells: string[][] = [];
+  for(let i = 0; i < tableHeight; i++) {
+    const arr = [];
+    for(let j = 0; j < cells.length; j++) {
+      arr.push(cells[j][i]);
+    }
+    transposedCells.push(arr);
+  }
+
+  return '<table class="truth"><tbody>' + transposedCells.map((row) => {
+    return '<tr>' + row.map((cell_) => {
+      const cell = cell_.trim();
+
+      if(cell === 'T' || cell === '1') {
+        return `<td class="T">${cell}</td>`;
+      } else if(cell === 'F' || cell === '0') {
+        return `<td class="F">${cell}</td>`;
+      }
+
+      return `<td>${cell}</td>`;
+    }).join('') + '</tr>';
+  }).join('') + '</tbody></table>';
+}
+
 const requestPage = async function(pageName: string): Promise<string | null> {
   try {
     const response = await axios.get(`pages/${pageName}.md`, {
@@ -125,28 +169,32 @@ const requestPage = async function(pageName: string): Promise<string | null> {
     });
     // console.log(response);
 
-    const rawContent = <string> response.data;
-    // console.log(rawContent);
-
-    const content = processMarkdown(rawContent, pageName);
+    let content = <string> response.data;
     // console.log(content);
 
-    const HTMLContent = markdown.parse(content, {
+    content = processMarkdown(content, pageName);
+    // console.log(content);
+
+    content = markdown.parse(content, {
       parseFlags:
         markdown.ParseFlags.COLLAPSE_WHITESPACE |
         markdown.ParseFlags.LATEX_MATH_SPANS |
         markdown.ParseFlags.TABLES,
         allowJSURIs: false,
-      onCodeBlock: (_langname: string, body: markdown.UTF8Bytes): string => {
-        return body.toString();
+      onCodeBlock: (lang: string, body: markdown.UTF8Bytes): string | markdown.UTF8Bytes => {
+        if(lang === 'truth_table') {
+          return buildTruthTable(body.toString());
+        }
+
+        return body;
       }
     });
     // console.log(HTMLContent);
 
-    const pureHTMLContent = DOMPurify.sanitize(HTMLContent);
+    content = DOMPurify.sanitize(content);
     // console.log(pureHTMLContent);
 
-    return pureHTMLContent;
+    return content;
   } catch(err) {
     console.error(`Failed to load page "${pageName}".`, err);
 
