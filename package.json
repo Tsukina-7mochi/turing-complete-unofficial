@@ -8,8 +8,8 @@
     "dev": "webpack --mode development --config ./webpack.dev.js",
     "watch": "webpack --mode development --watch --config ./webpack.dev.js"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Tsukina-7mochi",
+  "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "axios": "^0.26.1",
     "dompurify": "^2.3.6",
@@ -24,6 +24,7 @@
     "@typescript-eslint/parser": "^5.16.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.12.0",
+    "license-checker": "^25.0.1",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",

@@ -1,0 +1,58 @@
+{
+  "axios@0.26.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/axios/axios",
+    "publisher": "Matt Zabriskie",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/axios",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/axios/LICENSE"
+  },
+  "dompurify@2.3.6": {
+    "licenses": "(MPL-2.0 OR Apache-2.0)",
+    "repository": "https://github.com/cure53/DOMPurify",
+    "publisher": "Mario Heiderich",
+    "email": "mario@cure53.de",
+    "url": "https://cure53.de/",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/dompurify",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/dompurify/LICENSE"
+  },
+  "follow-redirects@1.14.9": {
+    "licenses": "MIT",
+    "repository": "https://github.com/follow-redirects/follow-redirects",
+    "publisher": "Ruben Verborgh",
+    "email": "ruben@verborgh.org",
+    "url": "https://ruben.verborgh.org/",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/follow-redirects",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/follow-redirects/LICENSE"
+  },
+  "fuse.js@6.5.3": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/krisk/Fuse",
+    "publisher": "Kiro Risk",
+    "email": "kirollos@gmail.com",
+    "url": "http://kiro.me",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/fuse.js",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/fuse.js/LICENSE"
+  },
+  "json5@2.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/json5/json5",
+    "publisher": "Aseem Kishore",
+    "email": "aseem.kishore@gmail.com",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/json5",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/json5/LICENSE.md"
+  },
+  "markdown-wasm@1.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/rsms/markdown-wasm",
+    "publisher": "Rasmus Andersson",
+    "email": "https://rsms.me/",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/markdown-wasm",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/markdown-wasm/LICENSE"
+  },
+  "turing-complete-unofficial@1.0.0": {
+    "licenses": "MIT",
+    "path": "/mnt/d/workspace/turing-complete-unofficial",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/readme.md"
+  }
+}
+

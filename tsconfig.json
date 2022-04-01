@@ -1,6 +1,7 @@
 {
   "include": [
     "app/**/*",
+    "tools/**/*"
   ],
   "compilerOptions": {
     "target": "ESNext",
