@@ -40,29 +40,11 @@ body > div.menu {
       background-color: $c-bg-active;
     }
 
-    &.collapsed {
-      > .expand {
-        display: inline-block;
-      }
-      > .collapse {
-        display: none;
-      }
-
-      & + .collapsible {
-        display: none;
-      }
+    & + .collapsible {
+      display: none;
     }
-    &.expanded {
-      > .expand {
-        display: none;
-      }
-      > .collapse {
-        display: inline-block;
-      }
-
-      & + .collapsible {
-        display: inline-block;
-      }
+    &.expanded + .collapsible {
+      display: inline-block;
     }
   }
 }

@@ -15,19 +15,19 @@ const registerExpansion = function(rootElement: HTMLElement): void {
         controller.classList.add('collapsible-controller');
         controller.classList.add('collapsed');
 
-        const expandButton = document.createElement('span');
-        expandButton.className = 'material-icons expand';
-        expandButton.innerHTML = '&#xE5CF;';
-        const collapseButton = document.createElement('span');
-        collapseButton.className = 'material-icons collapse';
-        collapseButton.innerHTML = '&#xE5CE;';
+        const icon = document.createElement('span');
+        icon.className = 'material-icons expand';
+        icon.innerHTML = '&#xE5CF;';
 
-        controller.insertBefore(expandButton, controller.childNodes[0]);
-        controller.insertBefore(collapseButton, controller.childNodes[0]);
+        controller.insertBefore(icon, controller.childNodes[0]);
 
         controller.addEventListener('click', () => {
-          controller.classList.toggle('collapsed');
           controller.classList.toggle('expanded');
+          if(controller.classList.contains('expanded')) {
+            icon.innerHTML = '&#xE5CE;';
+          } else {
+            icon.innerHTML = '&#xE5CF;';
+          }
         });
       }
     }
