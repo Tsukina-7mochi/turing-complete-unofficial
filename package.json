@@ -15,7 +15,7 @@
     "dompurify": "^2.3.6",
     "fuse.js": "^6.5.3",
     "json5": "^2.2.1",
-    "marked": "^4.0.12"
+    "markdown-wasm": "^1.2.0"
   },
   "devDependencies": {
     "@types/dompurify": "^2.3.3",
