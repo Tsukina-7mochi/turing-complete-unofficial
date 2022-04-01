@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { marked } from 'marked';
 import * as markdown from 'markdown-wasm';
 import DOMPurify from 'dompurify';
 import JSON5 from 'json5';
