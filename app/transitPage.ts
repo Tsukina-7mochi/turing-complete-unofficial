@@ -25,9 +25,9 @@ const transitPage = async function(pageName: string, targetElement: HTMLElement,
         controller.classList.toggle('expanded');
 
         if(controller.classList.contains('expanded')) {
-          controller.innerHTML = '&#xE5CF;開く';
-        } else {
           controller.innerHTML = '&#xE5CE;隠す';
+        } else {
+          controller.innerHTML = '&#xE5CF;開く';
         }
       });
     });
