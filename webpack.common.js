@@ -62,7 +62,12 @@ module.exports = {
     path: destPath,
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts'],
+    mainFields: ['module', 'main', 'browser'],
+    fallback: {
+      path: false,
+      fs: false
+    }
   },
   stats: {
     builtAt: true,
