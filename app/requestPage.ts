@@ -2,56 +2,62 @@ import axios from 'axios';
 import * as markdown from 'markdown-wasm';
 import DOMPurify from 'dompurify';
 import JSON5 from 'json5';
+import levelInfo from './levelInfo';
 
 const linkNameReplacer = (name: string): string =>
   name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
 
-let levelInfo: any = null;
-axios.get(`level_info.json5`, {
-  baseURL: window.location.origin + window.location.pathname
-}).then((response) => {
-  levelInfo = JSON5.parse<any>(response.data);
-}).catch((err) => {
-  console.error('Failed to fetch or parse level info', err);
-  return { dependencies: {} }
-});
+const levelInfo: {
+  data: levelInfo | null,
+  ready: Promise<void>
+} = {
+  data: null,
+  ready: axios.get(`level_info.json5`, {
+    baseURL: window.location.origin + window.location.pathname
+  }).then((response) => {
+    levelInfo.data = JSON5.parse<any>(response.data);
+  }).catch((err) => {
+    console.error('Failed to fetch or parse level info', err);
+    levelInfo.data = { dependencies: {} };
+  })
+}
 
 const processMarkdown = function(content_: string, pageName: string): string {
   let content = content_;
 
   // レベルページの場合、依存関係の情報を追加
 
-  if(levelInfo !== null) {
-    if(typeof levelInfo?.dependencies === 'object') {
-      if(levelInfo.dependencies[pageName]) {
-        // 依存関係の情報を追加
-        const dependencies = <string[]> levelInfo.dependencies[pageName];
-        const dependents: string[] = [];
+  if(levelInfo.data !== null) {
+    const allDependencies = levelInfo.data.dependencies;
 
-        for(const levelName in levelInfo.dependencies) {
-          if(!Array.isArray(levelInfo.dependencies[levelName])) {
-            throw Error(`In level info, levelInfo.dependencies[${levelName}] must be array`);
-          }
-          if(levelInfo.dependencies[levelName].map(linkNameReplacer).includes(pageName)) {
-            dependents.push(levelName);
-          }
+    if(allDependencies[pageName]) {
+      // 依存関係の情報を追加
+      const dependencies = <string[]> allDependencies[pageName];
+      const dependents: string[] = [];
+
+      for(const levelName in allDependencies) {
+        if(!Array.isArray(allDependencies[levelName])) {
+          throw Error(`In level info, levelInfo.dependencies[${levelName}] must be array`);
         }
-
-        const stringToInsert = [
-          '<h2>前提レベル</h2><ul>',
-          dependencies.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
-          '</ul><h2>このレベルを前提とするレベル</h2><ul>',
-          dependents.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
-          '</ul>\n\n',
-        ].join('');
-
-        // 最初のh2の前に挿入
-        const insertPos = content.match(/^##/m)?.index;
-        if(insertPos) {
-          content = content.slice(0, insertPos) + stringToInsert + content.slice(insertPos);
-        } else {
-          console.error('No place to insert dependency information');
+        if(allDependencies[levelName].map(linkNameReplacer).includes(pageName)) {
+          dependents.push(levelName);
         }
+      }
+
+      const stringToInsert = [
+        '<h2>前提レベル</h2><ul>',
+        dependencies.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
+        '</ul><h2>このレベルを前提とするレベル</h2><ul>',
+        dependents.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
+        '</ul>\n\n',
+      ].join('');
+
+      // 最初のh2の前に挿入
+      const insertPos = content.match(/^##/m)?.index;
+      if(insertPos) {
+        content = content.slice(0, insertPos) + stringToInsert + content.slice(insertPos);
+      } else {
+        console.error('No place to insert dependency information');
       }
     }
   }
@@ -163,6 +169,10 @@ const buildTruthTable = function(content: string): string {
 
 const requestPage = async function(pageName: string): Promise<string | null> {
   try {
+    if(levelInfo.data === null) {
+      await levelInfo.ready;
+    }
+
     const response = await axios.get(`pages/${pageName}.md`, {
       baseURL: window.location.origin + window.location.pathname
     });
