@@ -114,13 +114,19 @@
 ## 実績
 
 - [4 NAND = XOR]
-- [Condition 6]
-- [Turing Complete]
+- [Condition 10]
+- [Turing Complete](#turing_complete_achievement)
 - [Helperbot]
-- [4 Component Full Adder]
+- [5 Component Full Adder]
 - [Fast Adder]
 - [Tutorial Complete]
 - [Fast Bot]
 - [Symmetric ALU]
 - [3 Adder Multiply]
 - [Binary Counter]
+
+### 隠し実績
+
+- [Best hat]
+- [Black hat]
+- [Binary Racer](#binary_racer_achievement)
