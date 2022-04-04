@@ -96,5 +96,10 @@ body > main {
     max-width: 100%;
   }
 
-  // 真理値表
+  span.T, span.True {
+    color: $c-def-true;
+  }
+  span.F, span.False {
+    color: $c-def-false;
+  }
 }
