@@ -12,6 +12,7 @@ NANDゲートという部品に入力するとどのような出力になるか�
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 このNANDゲートという部品は、2つの入力値 (真偽値) に対してNAND演算 (否定論理積) を行った結果を出力します。

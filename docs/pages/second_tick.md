@@ -18,6 +18,7 @@ T, T, F
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 ![](https://gyazo.com/434bc41ce4e6f376b5564a15fc948c0e.png)

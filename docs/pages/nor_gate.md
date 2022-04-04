@@ -11,10 +11,11 @@ NORゲートを作成する問題です。
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
-NOR演算とOR演算は結果が逆となります。したがってOR演算の結果をNOT演算に入力すれば良いです。
+NOR演算とOR演算は結果が逆となります。したがって [ORゲート] の出力をNOTゲートに入力すれば良いです。
 
-![](https://gyazo.com/5ce4d0c65f37e46e1da72e08f56a6213.png)
+![](https://gyazo.com/27c6209be2d9627c3f944976f2ad8ce3.png)
 
 </div>

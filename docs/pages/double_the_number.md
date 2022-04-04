@@ -13,6 +13,7 @@ Byte SplitterはByteを8つのbitに分ける機能を持っています。
 
 ## 解説
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 2進数ではそれぞれの桁を1つ上に動かすことにより値を2倍することができます

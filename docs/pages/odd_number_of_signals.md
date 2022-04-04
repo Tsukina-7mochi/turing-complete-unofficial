@@ -13,6 +13,7 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 XOR回路を使うことで実現することが可能です。

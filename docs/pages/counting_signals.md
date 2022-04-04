@@ -10,6 +10,7 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 ### 下位1bit目
@@ -23,6 +24,9 @@
 [Double Trouble] で構成した回路で、4つとも <span class="T">True</span> の場合を除いたものを用意すればよさそうです。
 
 ### 下位3bit目
+
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
+<div class="spoiler">
 
 4つともTrueであるときにTrueとなります。4つのビットのANDを取ればよいです。
 

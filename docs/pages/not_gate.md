@@ -16,6 +16,7 @@ T, F
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 これに対してNAND演算の [真理値表](#truth_table) は次のようになっていました。

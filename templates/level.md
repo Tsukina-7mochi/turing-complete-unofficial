@@ -11,6 +11,7 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 解答は `div.spoiler` を使用して隠して記述します。

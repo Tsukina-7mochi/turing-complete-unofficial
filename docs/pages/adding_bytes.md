@@ -10,6 +10,7 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
 2進数の場合、FAを用いることで1bit (桁) の加算を行うことができます。
