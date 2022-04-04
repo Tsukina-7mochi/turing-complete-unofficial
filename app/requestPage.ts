@@ -138,7 +138,9 @@ const requestPage = async function(pageName: string): Promise<string | null> {
       parseFlags:
         markdown.ParseFlags.COLLAPSE_WHITESPACE |
         markdown.ParseFlags.LATEX_MATH_SPANS |
-        markdown.ParseFlags.TABLES,
+        markdown.ParseFlags.TABLES |
+        markdown.ParseFlags.STRIKETHROUGH |
+        markdown.ParseFlags.UNDERLINE,
         allowJSURIs: false,
       onCodeBlock: (lang: string, body: markdown.UTF8Bytes): string | markdown.UTF8Bytes => {
         if(lang === 'truth_table') {
