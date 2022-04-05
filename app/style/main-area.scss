@@ -29,6 +29,10 @@ body > main {
   code.math-block {
     display: block;
     background-color: transparent;
+    width: 100%;
+    overflow-x: scroll;
+
+    @include scrollbar;
   }
 
   // スポイラー
