@@ -56,6 +56,7 @@ module.exports = {
   },
   entry: {
     main: path.join(srcPath, 'main.ts'),
+    mathWorker: path.join(srcPath, 'mathWorker.ts')
   },
   output: {
     filename: '[name].bundle.js',

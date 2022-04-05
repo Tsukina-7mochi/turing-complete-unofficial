@@ -67,11 +67,11 @@ $$
 これは次の式と等価です。
 
 $$
-\begin{array}{rcl}
+\begin{align*}
 C
-&=& (a \cdot b) + (a \cdot c) + (b \cdot c) \\
-&=& (a \cdot b) + ((a + b) \cdot c) \tag{1}
-\end{array}
+=& (a \cdot b) + (a \cdot c) + (b \cdot c) \\
+=& (a \cdot b) + ((a + b) \cdot c) \tag{1}
+\end{align*}
 $$
 
 この式は、次のように解釈することができます。
@@ -109,18 +109,18 @@ $(1)$ 式を再帰的に展開していくと、次のようになります
 (数式はしっかり見なくても大丈夫です)。
 
 $$
-\begin{array}{rcl}
+\begin{align*}
 C_i
-&=& (a_i \cdot b_i) + ((a_i + b_i) \cdot c_i) \\
-&=& G_i + P_i \cdot c_i \\
-&=& G_i + P_i \cdot (G_{i-1} + P_{i-1} \cdot c_{i-1})
-=   G_i + P_i \cdot G_{i-1} + P_i \cdot P_{i-1} \cdot c_{i-1} \\
-&=& G_i + P_i \cdot G_{i-1} + P_i \cdot P_{i-1} \cdot G_{i-2}
+=& (a_i \cdot b_i) + ((a_i + b_i) \cdot c_i) \\
+=& G_i + P_i \cdot c_i \\
+=& G_i + P_i \cdot (G_{i-1} + P_{i-1} \cdot c_{i-1})
+=  G_i + P_i \cdot G_{i-1} + P_i \cdot P_{i-1} \cdot c_{i-1} \\
+=& G_i + P_i \cdot G_{i-1} + P_i \cdot P_{i-1} \cdot G_{i-2}
   + P_i \cdot P_{i-1} \cdot P_{i-2} + c_{i-2} \\
-&& \cdots \\
-&=& G_i + \Sigma^{i-1}_{k=0} (\Pi^{i}_{l=i-k} P_l) \cdot G_{i-k-1}
+& \cdots \\
+=& G_i + \Sigma^{i-1}_{k=0} (\Pi^{i}_{l=i-k} P_l) \cdot G_{i-k-1}
   + (\Pi^{i}_{l=0} P_l) \cdot c_{-1}
-\end{array}
+\end{align*}
 $$
 
 これは、$i$ 段目について次のことを意味します
@@ -128,14 +128,14 @@ $$
 
 $$
 C_i = \left\{
-\begin{array}{ll}
+\begin{align*}
 1 & (G_i = 1) \\
 1 & (P_i = 1 \land G_{i-1} = 1) \\
 1 & (P_i =  P_{i-1} = 1 \land G_{i-2} = 1) \\
 \cdots \\
 c_{-1} & (P_i = P_{i-1} = \cdots = P_0 = 1) \\
 0 & otherwise
-\end{array}
+\end{align*}
 \right.
 $$
 
@@ -194,21 +194,21 @@ $n=4$ で構成することにします。
 これらを事前に準備した状態で各桁のCarryの計算を考えます。
 
 $$
-\begin{array}{rcl}
-C_0 &=& G_0 + P_0 \cdot c_{-1} \\
-C_1 &=& G_1
-      + P_1 \cdot G_0
-      + P_1 \cdot P_0 \cdot c-{-1} \\
-C_2 &=& G_2
-      + P_2 \cdot G_1
-      + P_2 \cdot P_1 \cdot G_0
-      + P_2 \cdot P_1 \cdot P_0 \cdot c_{-1} \\
-C_3 &=& G_3
-      + P_3 \cdot G_2
-      + P_3 \cdot P_2 \cdot G_1
-      + P_3 \cdot P_2 \cdot P_1 \cdot G_0
-      + P_3 \cdot P_2 \cdot P_1 \cdot P_0 \cdot c_{-1} \\
-\end{array}
+\begin{align*}
+C_0 =& G_0 + P_0 \cdot c_{-1} \\
+C_1 =& G_1
+     + P_1 \cdot G_0
+     + P_1 \cdot P_0 \cdot c-{-1} \\
+C_2 =& G_2
+     + P_2 \cdot G_1
+     + P_2 \cdot P_1 \cdot G_0
+     + P_2 \cdot P_1 \cdot P_0 \cdot c_{-1} \\
+C_3 =& G_3
+     + P_3 \cdot G_2
+     + P_3 \cdot P_2 \cdot G_1
+     + P_3 \cdot P_2 \cdot P_1 \cdot G_0
+     + P_3 \cdot P_2 \cdot P_1 \cdot P_0 \cdot c_{-1} \\
+\end{align*}
 $$
 
 $P_i$ 同士のAND演算で出現しているものは次の6通りです。
