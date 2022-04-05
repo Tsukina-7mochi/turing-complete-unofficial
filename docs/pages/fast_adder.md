@@ -128,14 +128,14 @@ $$
 
 $$
 C_i = \left\{
-\begin{align*}
+\begin{array}{ll}
 1 & (G_i = 1) \\
 1 & (P_i = 1 \land G_{i-1} = 1) \\
 1 & (P_i =  P_{i-1} = 1 \land G_{i-2} = 1) \\
 \cdots \\
 c_{-1} & (P_i = P_{i-1} = \cdots = P_0 = 1) \\
 0 & otherwise
-\end{align*}
+\end{array}
 \right.
 $$
 
