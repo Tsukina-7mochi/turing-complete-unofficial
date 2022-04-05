@@ -3,6 +3,7 @@ import * as markdown from 'markdown-wasm';
 import DOMPurify from 'dompurify';
 import JSON5 from 'json5';
 import levelInfo from './levelInfo';
+// import katex from 'katex';
 
 const linkNameReplacer = (name: string): string =>
   name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
@@ -71,6 +72,27 @@ const processMarkdown = function(content_: string, pageName: string): string {
     return `<a href="#${linkName}" class="page-link">${name}</a>`;
   });
 
+  // 数式処理
+  // この時点でkatexで処理してもいいが、
+  // 読み込みを早くするためにDOMに展開したあとに遅延処理をさせる
+
+  // $$...$$
+  content = content.replace(/(?<!\\)\$\$((.(?!\$\$))|\\)*.\$\$/gs, (str) => {
+    // return `<div class="math-block">${katex.renderToString(str.slice(2, -2), {
+    //   throwOnError: false,
+    //   displayMode: true
+    // })}</div>`;
+
+    return `<code class="math-block">${str.slice(2, -2)}</code>`;
+  });
+  // $...$
+  content = content.replace(/(?<!\\)\$((.(?!\$))|\\)*.\$/gs, (str) => {
+    // return `<span class="math-inline">${katex.renderToString(str.slice(1, -1), {
+    //   throwOnError: false
+    // })}</span>`;
+
+    return `<code class="math-inline">${str.slice(1, -1)}</code>`;
+  });
 
   return content;
 }
@@ -137,11 +159,10 @@ const requestPage = async function(pageName: string): Promise<string | null> {
     content = markdown.parse(content, {
       parseFlags:
         markdown.ParseFlags.COLLAPSE_WHITESPACE |
-        markdown.ParseFlags.LATEX_MATH_SPANS |
         markdown.ParseFlags.TABLES |
         markdown.ParseFlags.STRIKETHROUGH |
         markdown.ParseFlags.UNDERLINE,
-        allowJSURIs: false,
+      allowJSURIs: false,
       onCodeBlock: (lang: string, body: markdown.UTF8Bytes): string | markdown.UTF8Bytes => {
         if(lang === 'truth_table') {
           return buildTruthTable(body.toString());

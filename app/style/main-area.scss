@@ -22,6 +22,15 @@ body > main {
     padding: 0 0.2em;
   }
 
+  // 数式
+  code.math-inline {
+    background-color: transparent;
+  }
+  code.math-block {
+    display: block;
+    background-color: transparent;
+  }
+
   // スポイラー
   .spoiler {
     display: none;

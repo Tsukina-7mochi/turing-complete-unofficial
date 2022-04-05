@@ -1,8 +1,8 @@
 /* eslint-env node */
 
 const fs = require('fs');
-const list = JSON.parse(fs.readFileSync('license-list.json'));
-const file = fs.openSync('../license', 'w');
+const list = JSON.parse(fs.readFileSync('tools/license-list.json'));
+const file = fs.openSync('license', 'w');
 
 fs.writeSync(file, `# License
 

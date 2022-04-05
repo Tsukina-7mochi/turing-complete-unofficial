@@ -15,10 +15,12 @@
     "dompurify": "^2.3.6",
     "fuse.js": "^6.5.3",
     "json5": "^2.2.1",
+    "katex": "^0.15.3",
     "markdown-wasm": "^1.2.0"
   },
   "devDependencies": {
     "@types/dompurify": "^2.3.3",
+    "@types/katex": "^0.14.0",
     "@types/marked": "^4.0.3",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",

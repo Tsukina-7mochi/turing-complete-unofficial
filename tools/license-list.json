@@ -6,6 +6,14 @@
     "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/axios",
     "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/axios/LICENSE"
   },
+  "commander@8.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/tj/commander.js",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/katex/node_modules/commander",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/katex/node_modules/commander/LICENSE"
+  },
   "dompurify@2.3.6": {
     "licenses": "(MPL-2.0 OR Apache-2.0)",
     "repository": "https://github.com/cure53/DOMPurify",
@@ -41,6 +49,12 @@
     "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/json5",
     "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/json5/LICENSE.md"
   },
+  "katex@0.15.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/KaTeX/KaTeX",
+    "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/katex",
+    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/katex/LICENSE"
+  },
   "markdown-wasm@1.2.0": {
     "licenses": "MIT",
     "repository": "https://github.com/rsms/markdown-wasm",
@@ -48,11 +62,6 @@
     "email": "https://rsms.me/",
     "path": "/mnt/d/workspace/turing-complete-unofficial/node_modules/markdown-wasm",
     "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/node_modules/markdown-wasm/LICENSE"
-  },
-  "turing-complete-unofficial@1.0.0": {
-    "licenses": "MIT",
-    "path": "/mnt/d/workspace/turing-complete-unofficial",
-    "licenseFile": "/mnt/d/workspace/turing-complete-unofficial/readme.md"
   }
 }
 

@@ -1,9 +1,5 @@
 {
   "include": [
-    "app/**/*",
-    "tools/**/*"
-  ],
-  "exclude": [
     "app/mathWorker.ts"
   ],
   "compilerOptions": {
@@ -14,7 +10,8 @@
     "lib": [
       "DOM",
       "DOM.Iterable",
-      "ESNext"
+      "ESNext",
+      "WebWorker"
     ],
     "allowJs": true,
     "strict": true,
