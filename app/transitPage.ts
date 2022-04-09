@@ -35,8 +35,11 @@ const transitPage = async function(pageName: string, targetElement: HTMLElement,
 
     // 数式の変換
     if(window.Worker) {
-      document.querySelectorAll('.math-inline').forEach((el) => {
+      document.querySelectorAll<HTMLElement>('x-equation').forEach((el) => {
         const worker = new Worker(`${window.location.origin + window.location.pathname}/app/mathWorker.bundle.js`);
+        // md4cはLaTeX数式を<x-equation>で囲って出力する
+        // ディスプレイモードの数式 ($$...$$) の場合type属性にdisplayが設定される
+        const displayMode = el.getAttribute('type') === 'display';
 
         worker.onmessage = (message): void => {
           el.innerHTML = <string> message.data;
@@ -44,22 +47,7 @@ const transitPage = async function(pageName: string, targetElement: HTMLElement,
 
         worker.postMessage({
           code: el.textContent,
-          options: {}
-        });
-      });
-
-      document.querySelectorAll('.math-block').forEach((el) => {
-        const worker = new Worker(`${window.location.origin + window.location.pathname}/app/mathWorker.bundle.js`);
-
-        worker.onmessage = (message): void => {
-          el.innerHTML = <string> message.data;
-        };
-
-        worker.postMessage({
-          code: el.textContent,
-          options: {
-            displayMode: true
-          }
+          options: { displayMode }
         });
       });
     } else {
