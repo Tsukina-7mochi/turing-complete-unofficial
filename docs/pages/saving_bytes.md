@@ -15,6 +15,6 @@
 <div class="spoiler-controller material-icons">&#xE5CF;開く</div>
 <div class="spoiler">
 
-![](https://gyazo.com/98459737bb6c5c22d0caa88a3b57ba23.png)
+![](https://gyazo.com/28b65733acdd316cc88bb69656d1983d.png)
 
 </div>
