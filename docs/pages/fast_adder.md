@@ -108,20 +108,20 @@ $a_i, b_i, c_i, C_i, G_i, P_i$ と表すことにします。
 $(1)$ 式を再帰的に展開していくと、次のようになります
 (数式はしっかり見なくても大丈夫です)。
 
-$$
+```latex
+
 \begin{align*}
 C_i
 =& (a_i \cdot b_i) + ((a_i + b_i) \cdot c_i) \\
 =& G_i + P_i \cdot c_i \\
 =& G_i + P_i \cdot (G_{i-1} + P_{i-1} \cdot c_{i-1})
 =  G_i + P_i \cdot G_{i-1} + P_i \cdot P_{i-1} \cdot c_{i-1} \\
-=& G_i + P_i \cdot G_{i-1} + P_i \cdot P_{i-1} \cdot G_{i-2}
-  + P_i \cdot P_{i-1} \cdot P_{i-2} + c_{i-2} \\
+=& G_i + P_i \cdot G_{i-1} + P_i \cdot P_{i-1} \cdot G_{i-2} + P_i \cdot P_{i-1} \cdot P_{i-2} + c_{i-2} \\
 & \cdots \\
-=& G_i + \Sigma^{i-1}_{k=0} (\Pi^{i}_{l=i-k} P_l) \cdot G_{i-k-1}
-  + (\Pi^{i}_{l=0} P_l) \cdot c_{-1}
+=& G_i + \Sigma^{i-1}_{k=0} (\Pi^{i}_{l=i-k} P_l) \cdot G_{i-k-1} + (\Pi^{i}_{l=0} P_l) \cdot c_{-1}
 \end{align*}
-$$
+
+```
 
 これは、$i$ 段目について次のことを意味します
 (ただし上の行の条件が優先されるとします)。

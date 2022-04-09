@@ -72,28 +72,6 @@ const processMarkdown = function(content_: string, pageName: string): string {
     return `<a href="#${linkName}" class="page-link">${name}</a>`;
   });
 
-  // 数式処理
-  // この時点でkatexで処理してもいいが、
-  // 読み込みを早くするためにDOMに展開したあとに遅延処理をさせる
-
-  // $$...$$
-  content = content.replace(/(?<!\\)\$\$((.(?!\$\$))|\\)*.\$\$/gs, (str) => {
-    // return `<div class="math-block">${katex.renderToString(str.slice(2, -2), {
-    //   throwOnError: false,
-    //   displayMode: true
-    // })}</div>`;
-
-    return `<code class="math-block">${str.slice(2, -2)}</code>`;
-  });
-  // $...$
-  content = content.replace(/(?<!\\)\$((.(?!\$))|\\)*.\$/gs, (str) => {
-    // return `<span class="math-inline">${katex.renderToString(str.slice(1, -1), {
-    //   throwOnError: false
-    // })}</span>`;
-
-    return `<code class="math-inline">${str.slice(1, -1)}</code>`;
-  });
-
   return content;
 }
 
@@ -161,19 +139,28 @@ const requestPage = async function(pageName: string): Promise<string | null> {
         markdown.ParseFlags.COLLAPSE_WHITESPACE |
         markdown.ParseFlags.TABLES |
         markdown.ParseFlags.STRIKETHROUGH |
+        markdown.ParseFlags.LATEX_MATH_SPANS |
         markdown.ParseFlags.UNDERLINE,
       allowJSURIs: false,
       onCodeBlock: (lang: string, body: markdown.UTF8Bytes): string | markdown.UTF8Bytes => {
         if(lang === 'truth_table') {
           return buildTruthTable(body.toString());
+        } else if(lang === 'latex') {
+          return Uint8Array.from([
+            ...[...'<x-equation type="display">'].map((ch) => ch.charCodeAt(0)),
+            ...body,
+            ...[...'</x-equation>'].map((ch) => ch.charCodeAt(0))
+          ]);
         }
 
         return body;
       }
     });
-    // console.log(HTMLContent);
+    // console.log(content);
 
-    content = DOMPurify.sanitize(content);
+    content = DOMPurify.sanitize(content, {
+      ADD_TAGS: ['x-equation']
+    });
     // console.log(pureHTMLContent);
 
     return content;
