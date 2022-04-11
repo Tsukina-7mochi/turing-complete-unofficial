@@ -36,7 +36,7 @@
     sr_latch: ['Odd ticks'],
     bit_inverter: ['Saving Gracefully'],
     input_selector: ['The Bus', 'Bit Inverter'],
-    saving_bytes: ['Saving Bytes'],
+    saving_bytes: ['Input Selector'],
     little_box: ['1 bit decoder', 'Saving Bytes'],
     counter: ['Saving Bytes'],
     logic_engine: ['Signed Negator', '3 Bit Decoder'],
