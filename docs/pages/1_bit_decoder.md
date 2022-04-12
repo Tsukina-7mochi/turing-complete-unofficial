@@ -1,4 +1,4 @@
-# 1 bit Decoder
+# 1 Bit Decoder
 
 ## 概要
 

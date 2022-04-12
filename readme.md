@@ -79,6 +79,8 @@ $npm run build
   - `3 Bit Decoder` と表記します
 - レベル名 `Conditionals` ( `Conditions` が存在、拡張的な内容 )
   - `Conditionals` と表記します
+- レベル名 `ODD Number of Signals` (`Odd Ticks` が存在)
+  - `Odd Number of Signals` と表記します
 
   ### 数式
 

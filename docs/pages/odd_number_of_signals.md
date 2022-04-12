@@ -1,4 +1,4 @@
-# ODD Number of Signals
+# Odd Number of Signals
 
 ## 概要
 
