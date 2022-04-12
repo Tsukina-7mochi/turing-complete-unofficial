@@ -20,6 +20,10 @@ body > div.menu {
     }
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    display: block;
+  }
+
   h2 {
     border-left: 6px solid $c-def-white;
     margin: 0.2em 0;
