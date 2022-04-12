@@ -59,13 +59,20 @@ $npm run build
 ページへのリンクは `#...` の形で記述します(例: `#or_gate`)
 また、 `[and_gate]` 、 `[AND Gate]` のようにした場合 `[and_gate](#and_gate)` 、 `AND Gate(#and_gate)` のように変換されます。
 
-- この表記の拡張 (aliasを定義するファイルの追加) については検討中です。
+- `page_info.json5` の `alias` フィールドに `alias名: 内部名` のフィールドを
+  追加することで任意の別名を追加することができます。
 
 ## 動的生成コンテンツ
 
+### メニュー
+
+`page_info.json5` の内容に基づきメニューを生成します。
+
+`page_info.json5` の構造について詳細は `/app/pageInfo.ts` の型定義を参照
+
 ### レベルページ
 
-`level_info.json5` に依存関係が定義されているページについて、該当レベルの前提レベルと該当レベルを前提とするレベルの内容を自動的に追加します。
+`page_info.json5` に依存関係が定義されているページについて、該当レベルの前提レベルと該当レベルを前提とするレベルの内容を自動的に追加します。
 
 ## その他
 
@@ -81,6 +88,10 @@ $npm run build
   - `Conditionals` と表記します
 - レベル名 `ODD Number of Signals` (`Odd Ticks` が存在)
   - `Odd Number of Signals` と表記します
+- 実績名 `Black hat`
+  - `Black Hat` と表記します
+- 実績名 `Best hat`
+  - `Best Hat` と表記します
 
   ### 数式
 
