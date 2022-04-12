@@ -168,6 +168,15 @@
           'symmetric_alu',
           '3_adder_multiply',
           'binary_counter',
+          {
+            title: '隠し実績',
+            collapsible: true,
+            contents: [
+              'best_hat',
+              'black_hat',
+              'binary_racer_achievement'
+            ]
+          }
         ],
       },
     ],
@@ -938,6 +947,21 @@
     binary_counter: {
       title: 'Binary Counter',
       filename: 'binary_counter.md',
+      category: 'achievements',
+    },
+    best_hat: {
+      title: 'Best hat',
+      filename: 'best_hat.md',
+      category: 'achievements',
+    },
+    black_hat: {
+      title: 'Black hat',
+      filename: 'black_hat.md',
+      category: 'achievements',
+    },
+    binary_racer_achievement: {
+      title: 'Binary Racer (実績)',
+      filename: 'binary_racer_achievement.md',
       category: 'achievements',
     },
   },

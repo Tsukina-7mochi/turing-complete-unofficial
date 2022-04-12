@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { linkNameReplacer } from './requestPage';
+import { toLinkName } from './pageInfo';
 import Fuse from 'fuse.js'
 
 const getMenu = async function(): Promise<string> {
@@ -33,7 +33,7 @@ const renderSearchResult = function(searchText: string, targetElement: HTMLEleme
         const article = document.createElement('article');
         const link = document.createElement('a');
 
-        link.href = `#${linkNameReplacer(result.item)}`;
+        link.href = `#${toLinkName(result.item)}`;
         link.textContent = `${result.item}`;
 
         article.appendChild(link);
