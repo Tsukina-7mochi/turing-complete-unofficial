@@ -19,7 +19,6 @@
       },
       {
         title: 'レベル解説',
-        collapsible: true,
         contents: [
           {
             title: 'BASIC LOGIC',
