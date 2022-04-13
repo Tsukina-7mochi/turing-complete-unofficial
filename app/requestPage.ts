@@ -1,55 +1,36 @@
 import axios from 'axios';
 import * as markdown from 'markdown-wasm';
 import DOMPurify from 'dompurify';
-import JSON5 from 'json5';
-import levelInfo from './levelInfo';
-// import katex from 'katex';
-
-const linkNameReplacer = (name: string): string =>
-  name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
-
-const levelInfo: {
-  data: levelInfo | null,
-  ready: Promise<void>
-} = {
-  data: null,
-  ready: axios.get(`level_info.json5`, {
-    baseURL: window.location.origin + window.location.pathname
-  }).then((response) => {
-    levelInfo.data = JSON5.parse<any>(response.data);
-  }).catch((err) => {
-    console.error('Failed to fetch or parse level info', err);
-    levelInfo.data = { dependencies: {} };
-  })
-}
+import { pageInfo, toLinkName } from './pageInfo';
 
 const processMarkdown = function(content_: string, pageName: string): string {
   let content = content_;
 
   // レベルページの場合、依存関係の情報を追加
+  if(pageInfo.data !== null) {
+    const page = pageInfo.data.pages[pageName];
 
-  if(levelInfo.data !== null) {
-    const allDependencies = levelInfo.data.dependencies;
+    console.log('data: ', pageInfo.data);
 
-    if(allDependencies[pageName]) {
-      // 依存関係の情報を追加
-      const dependencies = <string[]> allDependencies[pageName];
+
+    if(page.category === 'level' && page.dependencies) {
       const dependents: string[] = [];
 
-      for(const levelName in allDependencies) {
-        if(!Array.isArray(allDependencies[levelName])) {
-          throw Error(`In level info, levelInfo.dependencies[${levelName}] must be array`);
-        }
-        if(allDependencies[levelName].map(linkNameReplacer).includes(pageName)) {
-          dependents.push(levelName);
+      for(const pageName_ in pageInfo.data.pages) {
+        const page_ = pageInfo.data.pages[pageName_];
+
+        if(page_.category === 'level' && page_.dependencies) {
+          if(page_.dependencies.includes(pageName)) {
+            dependents.push(pageName_);
+          }
         }
       }
 
       const stringToInsert = [
         '<h2>前提レベル</h2><ul>',
-        dependencies.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
+        page.dependencies.map(levelName => `<li><a href="#${levelName}" class="page-link">${pageInfo.data?.pages[levelName].title}</a></li>`).join(''),
         '</ul><h2>このレベルを前提とするレベル</h2><ul>',
-        dependents.map(levelName => `<li><a href="#${linkNameReplacer(levelName)}" class="page-link">${levelName}</a>`).join(''),
+        dependents.map(levelName => `<li><a href="#${levelName}" class="page-link">${pageInfo.data?.pages[levelName].title}</a></li>`).join(''),
         '</ul>\n\n',
       ].join('');
 
@@ -66,9 +47,8 @@ const processMarkdown = function(content_: string, pageName: string): string {
   // ターゲットなしリンクの書き換え
   content = content.replace(/\[[^[]+\](?![(])/g, (str: string) => {
     const name = str.slice(1, -1);
-    const linkName = linkNameReplacer(name);
+    const linkName = toLinkName(name);
 
-    // return `${str}(${linkName})`;
     return `<a href="#${linkName}" class="page-link">${name}</a>`;
   });
 
@@ -119,8 +99,8 @@ const buildTruthTable = function(content: string): string {
 
 const requestPage = async function(pageName: string): Promise<string | null> {
   try {
-    if(levelInfo.data === null) {
-      await levelInfo.ready;
+    if(pageInfo.data === null) {
+      await pageInfo.ready;
     }
 
     const response = await axios.get(`pages/${pageName}.md`, {
@@ -175,7 +155,3 @@ const requestPage = async function(pageName: string): Promise<string | null> {
 }
 
 export default requestPage;
-
-export {
-  linkNameReplacer
-}

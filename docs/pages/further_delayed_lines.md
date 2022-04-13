@@ -1,4 +1,4 @@
-# Further Delayed Lines
+# Delayed Lines
 
 ## 概要
 

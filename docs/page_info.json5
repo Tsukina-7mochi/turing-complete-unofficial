@@ -1,0 +1,970 @@
+{
+  menu: {
+    contents: [
+      {
+        text: 'トップページ',
+        href: '#',
+      },
+      {
+        text: 'ライセンス',
+        href: 'https://github.com/Tsukina-7mochi/turing-complete-unofficial/blob/9a1baa0d5011e5aed55121634f8d894c1722b92e/LICENSE',
+      },
+      {
+        text: 'プロジェクトのレポジトリ',
+        href: 'https://github.com/Tsukina-7mochi/turing-complete-unofficial',
+      },
+      {
+        text: '公式サイト',
+        href: 'https://turingcomplete.game',
+      },
+      {
+        title: 'レベル解説',
+        contents: [
+          {
+            title: 'BASIC LOGIC',
+            collapsible: true,
+            contents: [
+              'crude_awakening',
+              'nand_gate',
+              'not_gate',
+              'and_gate',
+              'nor_gate',
+              'or_gate',
+              'always_on',
+              'second_tick',
+              'xor_gate',
+              'bigger_or_gate',
+              'bigger_and_gate',
+              'xnor_gate',
+            ],
+          },
+          {
+            title: 'ARITHEMETIC',
+            collapsible: true,
+            contents: [
+              'binary_racer',
+              'double_trouble',
+              'odd_number_of_signals',
+              'counting_signals',
+              'half_adder',
+              'byte_or',
+              'byte_not',
+              'adding_bytes',
+              'negative_numbers',
+              'bit_switch',
+              'the_bus',
+              'signed_negator',
+              '1_bit_decoder',
+              '3_bit_decoder',
+              'one_way',
+            ],
+          },
+          {
+            title: 'MEMORY',
+            collapsible: true,
+            contents: [
+              'circular_dependency',
+              'delayed_lines',
+              'odd_ticks',
+              'saving_gracefully',
+              'sr_latch',
+              'bit_inverter',
+              'input_selector',
+              'saving_bytes',
+              'little_box',
+              'counter',
+            ],
+          },
+          {
+            title: 'CPU ARCHITECTURE',
+            collapsible: true,
+            contents: [
+              'logic_engine',
+              'arithemetic_engine',
+              'registers',
+              'component_factory',
+              'instruction_decoder',
+              'calculations',
+              'conditions',
+              'program',
+              'immediate_values_cpu_architecture',
+              'turing_complete',
+            ],
+          },
+          {
+            title: 'PROGRAMMING',
+            collapsible: true,
+            contents: [
+              'add_5',
+              'calibrating_laser_cannons',
+              'spacial_invasion',
+              'storage_cracker',
+              'masking_time',
+              'the_maze',
+            ],
+          },
+          {
+            title: 'CPU ARCHITECTURE 2',
+            collapsible: true,
+            contents: [
+              'xor',
+              'byte_constant',
+              'byte_xor',
+              'equality',
+              'unsigned_less',
+              'signed_less',
+              'wide_instructions',
+              'wire_spaghetti',
+              'opcodes',
+              'immediate_values_cpu_architecture_2',
+              'conditionals',
+            ],
+          },
+          {
+            title: 'FUNCTIONS',
+            collapsible: true,
+            contents: [
+              'the_sandbox',
+              'the_lab',
+              'delay',
+              'shift',
+              'the_product_of_nibbles',
+              'ram',
+              'divide',
+              'stack',
+              'push_and_pop',
+              'functions',
+            ],
+          },
+          {
+            title: 'ASSEMBLY CHALLENGES',
+            collapsible: true,
+            contents: [
+              'ai_showdown',
+              'robot_racing',
+              'unseen_fruit',
+              'delicious_order',
+              'dancing_machine',
+              'tower_of_alloy',
+              'planet_names',
+              'water_world',
+            ],
+          },
+        ],
+      },
+      {
+        title: '実績',
+        collapsible: true,
+        contents: [
+          '4_nand_equals_xor',
+          'condition_10',
+          'turing_complete_achievement',
+          'helperbot',
+          '5_component_full_adder',
+          'fast_adder',
+          'tutorial_complete',
+          'fast_bot',
+          'symmetric_alu',
+          '3_adder_multiply',
+          'binary_counter',
+          {
+            title: '隠し実績',
+            collapsible: true,
+            contents: [
+              'best_hat',
+              'black_hat',
+              'binary_racer_achievement'
+            ]
+          }
+        ],
+      },
+    ],
+  },
+  pages: {
+    index: {
+      title: 'Top Page',
+      filename: 'index.md',
+      category: 'others',
+    },
+    crude_awakening: {
+      title: 'Crude Awakening',
+      filename: 'crude_awakening.md',
+      category: 'level',
+      dependencies: [],
+    },
+    nand_gate: {
+      title: 'NAND Gate',
+      filename: 'nand_gate.md',
+      category: 'level',
+      dependencies: [
+        'crude_awakening',
+      ],
+    },
+    not_gate: {
+      title: 'NOT Gate',
+      filename: 'not_gate.md',
+      category: 'level',
+      dependencies: [
+        'nand_gate'
+      ],
+    },
+    and_gate: {
+      title: 'AND Gate',
+      filename: 'and_gate.md',
+      category: 'level',
+      dependencies: [
+        'not_gate'
+      ],
+    },
+    nor_gate: {
+      title: 'NOR Gate',
+      filename: 'nor_gate.md',
+      category: 'level',
+      dependencies: [
+        'not_gate',
+      ],
+    },
+    or_gate: {
+      title: 'OR Gate',
+      filename: 'or_gate.md',
+      category: 'level',
+      dependencies: [
+        'not_gate',
+      ],
+    },
+    always_on: {
+      title: 'Always On',
+      filename: 'always_on.md',
+      category: 'level',
+      dependencies: [
+        'and_gate',
+        'nor_gate',
+        'or_gate',
+      ],
+    },
+    second_tick: {
+      title: 'Second Tick',
+      filename: 'second_tick.md',
+      category: 'level',
+      dependencies: [
+        'always_on',
+      ],
+    },
+    xor_gate: {
+      title: 'XOR Gate',
+      filename: 'xor_gate.md',
+      category: 'level',
+      dependencies: [
+        'second_tick',
+      ],
+    },
+    bigger_or_gate: {
+      title: 'Bigger OR Gate',
+      filename: 'bigger_or_gate.md',
+      category: 'level',
+      dependencies: [
+        'xor_gate',
+      ],
+    },
+    bigger_and_gate: {
+      title: 'Bigger AND Gate',
+      filename: 'bigger_and_gate.md',
+      category: 'level',
+      dependencies: [
+        'xor_gate',
+      ],
+    },
+    xnor_gate: {
+      title: 'XNOR Gate',
+      filename: 'xnor_gate.md',
+      category: 'level',
+      dependencies: [
+        'bigger_or_gate',
+        'bigger_and_gate',
+      ],
+    },
+    binary_racer: {
+      title: 'Binary Racer',
+      filename: 'binary_racer.md',
+      category: 'level',
+      dependencies: [
+        'bigger_or_gate',
+      ],
+    },
+    double_trouble: {
+      title: 'Double Trouble',
+      filename: 'double_trouble.md',
+      category: 'level',
+      dependencies: [
+        'bigger_or_gate',
+      ],
+    },
+    odd_number_of_signals: {
+      title: 'Odd Number of Signals',
+      filename: 'odd_number_of_signals.md',
+      category: 'level',
+      dependencies: [
+        'bigger_or_gate',
+        'bigger_and_gate',
+        'xnor_gate',
+      ],
+    },
+    counting_signals: {
+      title: 'Counting Signals',
+      filename: 'counting_signals.md',
+      category: 'level',
+      dependencies: [
+        'binary_racer',
+        'double_trouble',
+        'odd_number_of_signals',
+      ],
+    },
+    half_adder: {
+      title: 'Half Adder',
+      filename: 'half_adder.md',
+      category: 'level',
+      dependencies: [
+        'odd_number_of_signals',
+      ],
+    },
+    double_the_number: {
+      title: 'Double the Number',
+      filename: 'double_the_number.md',
+      category: 'level',
+      dependencies: [
+        'counting_signals',
+      ],
+    },
+    full_adder: {
+      title: 'Full Adder',
+      filename: 'full_adder.md',
+      category: 'level',
+      dependencies: [
+        'half_adder',
+      ],
+    },
+    byte_or: {
+      title: 'Byte OR',
+      filename: 'byte_or.md',
+      category: 'level',
+      dependencies: [
+        'double_the_number',
+      ],
+    },
+    byte_not: {
+      title: 'Byte NOT',
+      filename: 'byte_not.md',
+      category: 'level',
+      dependencies: [
+        'double_the_number',
+      ],
+    },
+    adding_bytes: {
+      title: 'Adding Bytes',
+      filename: 'adding_bytes.md',
+      category: 'level',
+      dependencies: [
+        'double_the_number',
+        'full_adder',
+      ],
+    },
+    negative_numbers: {
+      title: 'Negative Numbers',
+      filename: 'negative_numbers.md',
+      category: 'level',
+      dependencies: [
+        'byte_or',
+        'byte_not',
+        'adding_bytes',
+      ],
+    },
+    bit_switch: {
+      title: 'Bit Switch',
+      filename: 'bit_switch.md',
+      category: 'level',
+      dependencies: [
+        'adding_bytes',
+      ],
+    },
+    the_bus: {
+      title: 'The Bus',
+      filename: 'the_bus.md',
+      category: 'level',
+      dependencies: [
+        'bit_switch',
+      ],
+    },
+    signed_negator: {
+      title: 'Signed Negator',
+      filename: 'signed_negator.md',
+      category: 'level',
+      dependencies: [
+        'negative_numbers',
+      ],
+    },
+    '1_bit_decoder': {
+      title: '1 Bit Decoder',
+      filename: '1_bit_decoder.md',
+      category: 'level',
+      dependencies: [
+        'saving_bytes',
+      ],
+    },
+    '3_bit_decoder': {
+      title: '3 Bit Decoder',
+      filename: '3_bit_decoder.md',
+      category: 'level',
+      dependencies: [
+        'saving_bytes',
+        '1_bit_decoder',
+      ],
+    },
+    one_way: {
+      title: 'One Way',
+      filename: 'one_way.md',
+      category: 'level',
+      dependencies: [
+        '3_bit_decoder',
+      ],
+    },
+    circular_dependency: {
+      title: 'Circular Dependency',
+      filename: 'circular_dependency.md',
+      category: 'level',
+      dependencies: [
+        'bigger_and_gate',
+      ],
+    },
+    delayed_lines: {
+      title: 'Delayed Lines',
+      filename: 'further_delayed_lines.md',
+      category: 'level',
+      dependencies: [
+        'circular_dependency',
+      ],
+    },
+    odd_ticks: {
+      title: 'Odd Ticks',
+      filename: 'odd_ticks.md',
+      category: 'level',
+      dependencies: [
+        'delayed_lines',
+      ],
+    },
+    saving_gracefully: {
+      title: 'Saving Gracefully',
+      filename: 'saving_gracefully.md',
+      category: 'level',
+      dependencies: [
+        'odd_ticks',
+      ],
+    },
+    sr_latch: {
+      title: 'SR Latch',
+      filename: 'sr_latch.md',
+      category: 'level',
+      dependencies: [
+        'odd_ticks',
+      ],
+    },
+    bit_inverter: {
+      title: 'Bit Inverter',
+      filename: 'bit_inverter.md',
+      category: 'level',
+      dependencies: [
+        'saving_gracefully',
+      ],
+    },
+    input_selector: {
+      title: 'Input Selector',
+      filename: 'input_selector.md',
+      category: 'level',
+      dependencies: [
+        'the_bus',
+        'bit_inverter',
+      ],
+    },
+    saving_bytes: {
+      title: 'Saving Bytes',
+      filename: 'saving_bytes.md',
+      category: 'level',
+      dependencies: [
+        'input_selector',
+      ],
+    },
+    little_box: {
+      title: 'Little Box',
+      filename: 'little_box.md',
+      category: 'level',
+      dependencies: [
+        '1_bit_decoder',
+        'saving_bytes',
+      ],
+    },
+    counter: {
+      title: 'Counter',
+      filename: 'counter.md',
+      category: 'level',
+      dependencies: [
+        'saving_bytes',
+      ],
+    },
+    logic_engine: {
+      title: 'Logic Engine',
+      filename: 'logic_engine.md',
+      category: 'level',
+      dependencies: [
+        'signed_negator',
+        '3_bit_decoder',
+      ],
+    },
+    arithemetic_engine: {
+      title: 'Arithmetic Engine',
+      filename: 'arithemetic_engine.md',
+      category: 'level',
+      dependencies: [
+        'logic_engine',
+      ],
+    },
+    registers: {
+      title: 'Registers',
+      filename: 'registers.md',
+      category: 'level',
+      dependencies: [
+        '3_bit_decoder',
+      ],
+    },
+    component_factory: {
+      title: 'Component Factory',
+      filename: 'component_factory.md',
+      category: 'level',
+      dependencies: [
+        'arithemetic_engine',
+      ],
+    },
+    instruction_decoder: {
+      title: 'Instruction Decoder',
+      filename: 'instruction_decoder.md',
+      category: 'level',
+      dependencies: [
+        'component_factory',
+        'registers',
+      ],
+    },
+    calculations: {
+      title: 'Calculations',
+      filename: 'calculations.md',
+      category: 'level',
+      dependencies: [
+        'instruction_decoder',
+        'one_way',
+      ],
+    },
+    conditions: {
+      title: 'Conditions',
+      filename: 'conditions.md',
+      category: 'level',
+      dependencies: [
+        'component_factory',
+      ],
+    },
+    program: {
+      title: 'Program',
+      filename: 'program.md',
+      category: 'level',
+      dependencies: [
+        'calculations',
+        'little_box',
+        'counter',
+      ],
+    },
+    immediate_values_cpu_architecture: {
+      title: 'Immediate Values (CPU ARCHITECTURE)',
+      filename: 'immediate_values_cpu_architecture.md',
+      category: 'level',
+      dependencies: [
+        'program',
+      ],
+    },
+    turing_complete: {
+      title: 'Turing Complete',
+      filename: 'turing_complete.md',
+      category: 'level',
+      dependencies: [
+        'conditions',
+        'immediate_values_cpu_architecture',
+      ],
+    },
+    add_5: {
+      title: 'Add 5',
+      filename: 'add_5.md',
+      category: 'level',
+      dependencies: [
+        'turing_complete',
+      ],
+    },
+    calibrating_laser_cannons: {
+      title: 'Calibrating Laser Cannons',
+      filename: 'calibrating_laser_cannons.md',
+      category: 'level',
+      dependencies: [
+        'add_5',
+      ],
+    },
+    spacial_invasion: {
+      title: 'Spacial Invasion',
+      filename: 'spacial_invasion.md',
+      category: 'level',
+      dependencies: [
+        'calibrating_laser_cannons',
+      ],
+    },
+    storage_cracker: {
+      title: 'Storage Cracker',
+      filename: 'storage_cracker.md',
+      category: 'level',
+      dependencies: [
+        'calibrating_laser_cannons',
+      ],
+    },
+    masking_time: {
+      title: 'Masking Time',
+      filename: 'masking_time.md',
+      category: 'level',
+      dependencies: [
+        'calibrating_laser_cannons',
+      ],
+    },
+    the_maze: {
+      title: 'The Maze',
+      filename: 'the_maze.md',
+      category: 'level',
+      dependencies: [
+        'spacial_invasion',
+        'storage_cracker',
+        'masking_time',
+      ],
+    },
+    xor: {
+      title: 'XOR',
+      filename: 'xor.md',
+      category: 'level',
+      dependencies: [
+        'the_maze',
+      ],
+    },
+    byte_constant: {
+      title: 'Byte Constant',
+      filename: 'byte_constant.md',
+      category: 'level',
+      dependencies: [
+        'the_maze',
+      ],
+    },
+    // byte_and: {
+    //   title: 'byte_and',
+    //   filename: 'byte_and.md',
+    //   category: 'level',
+    //   dependencies: [
+    //     'the_maze',
+    //   ],
+    // },
+    byte_xor: {
+      title: 'Byte XOR',
+      filename: 'byte_xor.md',
+      category: 'level',
+      dependencies: [
+        'xor',
+      ],
+    },
+    equality: {
+      title: 'Equality',
+      filename: 'equality.md',
+      category: 'level',
+      dependencies: [
+        'byte_constant',
+      ],
+    },
+    unsigned_less: {
+      title: 'Unsigned Less',
+      filename: 'unsigned_less.md',
+      category: 'level',
+      dependencies: [
+        'byte_xor',
+        'equality',
+      ],
+    },
+    signed_less: {
+      title: 'Signed Less',
+      filename: 'signed_less.md',
+      category: 'level',
+      dependencies: [
+        'byte_xor',
+        'equality',
+      ],
+    },
+    wide_instructions: {
+      title: 'Wide Instructions',
+      filename: 'wide_instructions.md',
+      category: 'level',
+      dependencies: [
+        'signed_less',
+        'unsigned_less',
+      ],
+    },
+    wire_spaghetti: {
+      title: 'Wire Spaghetti',
+      filename: 'wire_spaghetti.md',
+      category: 'level',
+      dependencies: [
+        'wide_instructions',
+      ],
+    },
+    opcodes: {
+      title: 'Opcodes',
+      filename: 'opcodes.md',
+      category: 'level',
+      dependencies: [
+        'wire_spaghetti',
+      ],
+    },
+    immediate_values_cpu_architecture_2: {
+      title: 'Immediate Values (CPU ARCHITECTURE 2)',
+      filename: 'immediate_values_cpu_architecture_2.md',
+      category: 'level',
+      dependencies: [
+        'opcodes',
+      ],
+    },
+    conditionals: {
+      title: 'Conditionals',
+      filename: 'conditionals.md',
+      category: 'level',
+      dependencies: [
+        'immediate_values_cpu_architecture_2',
+      ],
+    },
+    the_sandbox: {
+      title: 'The Sandbox',
+      filename: 'the_sandbox.md',
+      category: 'level',
+      dependencies: [
+        'conditionals',
+      ],
+    },
+    shift: {
+      title: 'Shift',
+      filename: 'shift.md',
+      category: 'level',
+      dependencies: [
+        'conditionals',
+      ],
+    },
+    the_lab: {
+      title: 'The Lab',
+      filename: 'the_lab.md',
+      category: 'level',
+      dependencies: [
+        'conditionals',
+      ],
+    },
+    delay: {
+      title: 'Delay',
+      filename: 'delay.md',
+      category: 'level',
+      dependencies: [
+        'conditionals',
+      ],
+    },
+    the_product_of_nibbles: {
+      title: 'The Product of Nibbles',
+      filename: 'the_product_of_nibbles.md',
+      category: 'level',
+      dependencies: [
+        'shift',
+      ],
+    },
+    ram: {
+      title: 'RAM',
+      filename: 'ram.md',
+      category: 'level',
+      dependencies: [
+        'conditionals',
+      ],
+    },
+    divide: {
+      title: 'Divide',
+      filename: 'divide.md',
+      category: 'level',
+      dependencies: [
+        'the_product_of_nibbles',
+      ],
+    },
+    stack: {
+      title: 'Stack',
+      filename: 'stack.md',
+      category: 'level',
+      dependencies: [
+        'ram',
+      ],
+    },
+    push_and_pop: {
+      title: 'PUSH and POP',
+      filename: 'push_and_pop.md',
+      category: 'level',
+      dependencies: [
+        'stack',
+      ],
+    },
+    functions: {
+      title: 'Functions',
+      filename: 'functions.md',
+      category: 'level',
+      dependencies: [
+        'push_and_pop',
+      ],
+    },
+    ai_showdown: {
+      title: 'AI Showdown',
+      filename: 'ai_showdown.md',
+      category: 'level',
+      dependencies: [
+        'conditionals',
+      ],
+    },
+    robot_racing: {
+      title: 'Robot Racing',
+      filename: 'robot_racing.md',
+      category: 'level',
+      dependencies: [
+        'functions',
+      ],
+    },
+    unseen_fruit: {
+      title: 'Unseen Fruit',
+      filename: 'unseen_fruit.md',
+      category: 'level',
+      dependencies: [
+        'ram',
+      ],
+    },
+    delicious_order: {
+      title: 'Delicious Order',
+      filename: 'delicious_order.md',
+      category: 'level',
+      dependencies: [
+        'ram',
+      ],
+    },
+    dancing_machine: {
+      title: 'Dancing Machine',
+      filename: 'dancing_machine.md',
+      category: 'level',
+      dependencies: [
+        'stack',
+      ],
+    },
+    tower_of_alloy: {
+      title: 'Tower Of Alloy',
+      filename: 'tower_of_alloy.md',
+      category: 'level',
+      dependencies: [
+        'robot_racing',
+      ],
+    },
+    planet_names: {
+      title: 'Planet Names',
+      filename: 'planet_names.md',
+      category: 'level',
+      dependencies: [
+        'stack',
+      ],
+    },
+    water_world: {
+      title: 'Water World',
+      filename: 'water_world.md',
+      category: 'level',
+      dependencies: [
+        'tower_of_alloy',
+      ],
+    },
+    truth_table: {
+      title: '真理値表',
+      filename: 'truth_table.md',
+      category: 'others'
+    },
+    '4_nand_equals_xor': {
+      title: '4 NAND = XOR',
+      filename: '4_nand_equals_xor.md',
+      category: 'achievements',
+    },
+    condition_10: {
+      title: 'Condition 10',
+      filename: 'condition_10.md',
+      category: 'achievements',
+    },
+    turing_complete_achievement: {
+      title: 'Turing Complete (実績)',
+      filename: 'turing_complete_achievement.md',
+      category: 'achievements',
+    },
+    helperbot: {
+      title: 'Helperbot',
+      filename: 'helperbot.md',
+      category: 'achievements',
+    },
+    '5_component_full_adder': {
+      title: '5 Component Full Adder',
+      filename: '5_component_full_adder.md',
+      category: 'achievements',
+    },
+    fast_adder: {
+      title: 'Fast Adder',
+      filename: 'fast_adder.md',
+      category: 'achievements',
+    },
+    tutorial_complete: {
+      title: 'Tutorial Complete',
+      filename: 'tutorial_complete.md',
+      category: 'achievements',
+    },
+    fast_bot: {
+      title: 'Fast Bot',
+      filename: 'fast_bot.md',
+      category: 'achievements',
+    },
+    symmetric_alu: {
+      title: 'Symmetric ALU',
+      filename: 'symmetric_alu.md',
+      category: 'achievements',
+    },
+    '3_adder_multiply': {
+      title: '3 Adder Multiply',
+      filename: '3_adder_multiply.md',
+      category: 'achievements',
+    },
+    binary_counter: {
+      title: 'Binary Counter',
+      filename: 'binary_counter.md',
+      category: 'achievements',
+    },
+    best_hat: {
+      title: 'Best hat',
+      filename: 'best_hat.md',
+      category: 'achievements',
+    },
+    black_hat: {
+      title: 'Black hat',
+      filename: 'black_hat.md',
+      category: 'achievements',
+    },
+    binary_racer_achievement: {
+      title: 'Binary Racer (実績)',
+      filename: 'binary_racer_achievement.md',
+      category: 'achievements',
+    },
+  },
+  alias: {
+    '真理値表': 'truth_table'
+  },
+}

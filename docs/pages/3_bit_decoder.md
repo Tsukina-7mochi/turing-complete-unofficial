@@ -1,4 +1,4 @@
-# 3 bit Decoder
+# 3 Bit Decoder
 
 ## 概要
 
