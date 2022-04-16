@@ -22,14 +22,22 @@ const transitPage = async function(pageName: string, targetElement: HTMLElement,
 
     // スポイラーのロジックを追加
     document.querySelectorAll('.spoiler-controller').forEach((controller) => {
+      controller.classList.remove('material-icons');
+
+      const icon = document.createElement('span');
+      icon.innerHTML = '&#xE5CF;';
+      icon.classList.add('material-icons');
+
+      const textNode = document.createTextNode('開く');
+
+      controller.innerHTML = '';
+      controller.appendChild(icon);
+      controller.appendChild(textNode);
+
       controller.addEventListener('click', () => {
         controller.classList.toggle('expanded');
-
-        if(controller.classList.contains('expanded')) {
-          controller.innerHTML = '&#xE5CE;隠す';
-        } else {
-          controller.innerHTML = '&#xE5CF;開く';
-        }
+        icon.innerHTML = controller.classList.contains('expanded') ? '&#xE5CE;' : '&#xE5CF;';
+        textNode.textContent = controller.classList.contains('expanded') ? '隠す' : '開く';
       });
     });
 
