@@ -5,18 +5,23 @@ const createMenuDOM = function(menu: Menu, titleLevel: number): DocumentFragment
 
   if(menu.title) {
     const title = document.createElement(`h${Math.max(1, Math.min(6, titleLevel))}`);
-    title.textContent = menu.title;
 
     if(menu.collapsible) {
-      title.classList.add('material-icons');
       title.classList.add('collapsible-controller');
-      title.innerHTML = `&#xE5CF;${menu.title}`;
+
+      const icon = document.createElement('span');
+      icon.innerHTML = `&#xE5CF;`;
+      icon.classList.add('material-icons');
+
+      title.appendChild(icon);
 
       title.addEventListener('click', () => {
         title.classList.toggle('expanded');
-        title.innerHTML = `${title.classList.contains('expanded') ? '&#xE5CE;' : '&#xE5CF;'}${menu.title}`;
+        icon.innerHTML = title.classList.contains('expanded') ? '&#xE5CE;' : '&#xE5CF;';
       });
     }
+
+    title.appendChild(document.createTextNode(menu.title));
 
     fragment.appendChild(title);
   }
@@ -53,7 +58,7 @@ const createMenuDOM = function(menu: Menu, titleLevel: number): DocumentFragment
       }
 
       const item = document.createElement('li');
-      item.innerHTML = `<a href="#${(<Link>content).href}" class="page-link">${(<Link>content).text}</a>`
+      item.innerHTML = `<a href="${(<Link>content).href}" class="page-link">${(<Link>content).text}</a>`
 
       contentList.appendChild(item);
     }
