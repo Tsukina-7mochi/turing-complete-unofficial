@@ -53,7 +53,7 @@ const createMenuDOM = function(menu: Menu, titleLevel: number): DocumentFragment
       }
 
       const item = document.createElement('li');
-      item.innerHTML = `<a href="#${(<Link>content).href}" class="page-link">${(<Link>content).text}</a>`
+      item.innerHTML = `<a href="${(<Link>content).href}" class="page-link">${(<Link>content).text}</a>`
 
       contentList.appendChild(item);
     }
