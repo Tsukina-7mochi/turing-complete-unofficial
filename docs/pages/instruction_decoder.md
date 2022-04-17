@@ -7,7 +7,7 @@
 命令の上位ビットに応じて命令の種類が以下のように決まるので、
 対応するビットに<span class="T">ON</span>、それ以外のビットに<span class="F">OFF</span>を出力します。
 
-|7ビット目|6ビット目|命令の種類|
+|8ビット目|7ビット目|命令の種類|
 |---|---|---|
 |<span class="F">OFF</span>|<span class="F">OFF</span>|Immediate (即値)|
 |<span class="F">OFF</span>|<span class="T">ON</span>|Calculate (計算)|
