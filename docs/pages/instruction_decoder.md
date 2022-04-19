@@ -21,4 +21,9 @@
 
 ## 解答
 
+<div class="spoiler-controller material-icons">&#xE5CF;開く</div>
+<div class="spoiler">
+
 ![](https://gist.githubusercontent.com/mikecat/b64b484ee0bfa969cc1e738af31e9e58/raw/e8a4ffbefd657ee242cd9196bc5a40c0738b1935/20220415220749_1.jpg)
+
+</div>
