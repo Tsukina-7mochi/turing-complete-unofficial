@@ -106,6 +106,35 @@ body > main {
     }
   }
 
+  // コードブロック
+  code {
+    font-family: 'Noto Sans Mono', monospace;
+  }
+
+  code.language-assembly {
+    span.comment {
+      color: #8F8F8F;
+    }
+    span.reserved {
+      color: #DF5F5F;
+    }
+    span.number {
+      color: #E49F44;
+    }
+    span.constant {
+      color: #6672df;
+    }
+    span.label {
+      color: #cf86ff;
+    }
+    span.instruction {
+      color: #5F9F5F;
+    }
+    span.symbol {
+      color: #FFFFFF;
+    }
+  }
+
   img {
     max-width: 100%;
   }
