@@ -51,8 +51,6 @@
               'byte_not',
               'adding_bytes',
               'negative_numbers',
-              'bit_switch',
-              'the_bus',
               'signed_negator',
               '1_bit_decoder',
               '3_bit_decoder',
@@ -66,10 +64,12 @@
               'circular_dependency',
               'delayed_lines',
               'odd_ticks',
+              'bit_switch',
               'saving_gracefully',
               'sr_latch',
               'bit_inverter',
               'input_selector',
+              'the_bus',
               'saving_bytes',
               'little_box',
               'counter',
@@ -366,6 +366,7 @@
       dependencies: [
         'double_the_number',
         'full_adder',
+        'bit_switch'
       ],
     },
     negative_numbers: {
@@ -383,7 +384,7 @@
       filename: 'bit_switch.md',
       category: 'level',
       dependencies: [
-        'adding_bytes',
+        'odd_number_of_signals',
       ],
     },
     the_bus: {
@@ -391,7 +392,7 @@
       filename: 'the_bus.md',
       category: 'level',
       dependencies: [
-        'bit_switch',
+        'input_selector',
       ],
     },
     signed_negator: {
@@ -480,8 +481,9 @@
       filename: 'input_selector.md',
       category: 'level',
       dependencies: [
-        'the_bus',
         'bit_inverter',
+        'adding_bytes',
+        'bit_switch'
       ],
     },
     saving_bytes: {
@@ -489,7 +491,7 @@
       filename: 'saving_bytes.md',
       category: 'level',
       dependencies: [
-        'input_selector',
+        'the_bus',
       ],
     },
     little_box: {
