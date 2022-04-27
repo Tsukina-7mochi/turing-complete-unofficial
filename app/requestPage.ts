@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as markdown from 'markdown-wasm';
 import DOMPurify from 'dompurify';
 import { pageInfo, toLinkName } from './pageInfo';
+import highlighter from './syntaxHighlight';
 
 const processMarkdown = function(content_: string, pageName: string): string {
   let content = content_;
@@ -10,7 +11,7 @@ const processMarkdown = function(content_: string, pageName: string): string {
   if(pageInfo.data !== null) {
     const page = pageInfo.data.pages[pageName];
 
-    console.log('data: ', pageInfo.data);
+    // console.log('data: ', pageInfo.data);
 
 
     if(page.category === 'level' && page.dependencies) {
@@ -131,6 +132,8 @@ const requestPage = async function(pageName: string): Promise<string | null> {
             ...body,
             ...[...'</x-equation>'].map((ch) => ch.charCodeAt(0))
           ]);
+        } else if(lang.startsWith('assembly')) {
+          return highlighter.assembly(body.toString());
         }
 
         return body;

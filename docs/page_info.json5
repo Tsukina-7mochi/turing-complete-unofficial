@@ -963,6 +963,11 @@
       filename: 'binary_racer_achievement.md',
       category: 'achievements',
     },
+    assembly_test: {
+      title: 'Assembly Test',
+      filename: 'assembly_test.md',
+      category: 'test',
+    },
   },
   alias: {
     '真理値表': 'truth_table'
