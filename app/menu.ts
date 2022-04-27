@@ -87,6 +87,17 @@ const loadMenu = async function(): Promise<void> {
     }
 
     elMenu.append(createMenuDOM(pageInfo.data.menu, 1));
+
+    // 1カラムの場合にメニューを表示/非表示するボタンの
+    // イベントリスナを登録
+    const menuToggleButton = document.querySelector('header > div.menu-button');
+    if(menuToggleButton === null) {
+      throw Error('menuToggleButton is null!');
+    } else {
+      menuToggleButton.addEventListener('click', () => {
+        elMenu.classList.toggle('shown');
+      });
+    }
   }
 }
 
