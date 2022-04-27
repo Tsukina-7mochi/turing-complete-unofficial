@@ -41,7 +41,7 @@ for(const pageName in pageInfo.pages) {
   } else {
     if(typeof page.category !== 'string') {
       console.error(`page ${pageName}: "category" must be string, not ${typeof page.category}`);
-    } else if(!['level', 'achievements', 'others'].includes(page.category)) {
+    } else if(!['level', 'achievements', 'others', 'test'].includes(page.category)) {
       console.error(`page ${pageName} has unknown category value "${page.category}"`);
     } else {
       if(page.category === 'level') {
