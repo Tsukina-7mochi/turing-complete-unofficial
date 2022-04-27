@@ -39,7 +39,7 @@
             ],
           },
           {
-            title: 'ARITHEMETIC',
+            title: 'ARITHMETIC',
             collapsible: true,
             contents: [
               'binary_racer',
@@ -80,7 +80,7 @@
             collapsible: true,
             contents: [
               'logic_engine',
-              'arithemetic_engine',
+              'arithmetic_engine',
               'registers',
               'component_factory',
               'instruction_decoder',
@@ -520,9 +520,9 @@
         '3_bit_decoder',
       ],
     },
-    arithemetic_engine: {
+    arithmetic_engine: {
       title: 'Arithmetic Engine',
-      filename: 'arithemetic_engine.md',
+      filename: 'arithmetic_engine.md',
       category: 'level',
       dependencies: [
         'logic_engine',
@@ -541,7 +541,7 @@
       filename: 'component_factory.md',
       category: 'level',
       dependencies: [
-        'arithemetic_engine',
+        'arithmetic_engine',
       ],
     },
     instruction_decoder: {
