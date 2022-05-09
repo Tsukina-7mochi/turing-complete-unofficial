@@ -6,7 +6,7 @@ byteの定数を出力する回路を構成する問題です。
 
 ## 攻略
 
-bit constantのコンポーネント利用して<span class="T">ON</span>入力を発生させることができます。
+bit constantのコンポーネントを利用して<span class="T">ON</span>入力を発生させることができます。
 
 ## 解答
 
