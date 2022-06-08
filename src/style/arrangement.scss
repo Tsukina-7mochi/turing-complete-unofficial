@@ -6,6 +6,7 @@ body {
   $header-height: 45px;
 
   // 標準では2カラム
+  overflow: hidden;
   grid-template-columns: ($screen-width-medium * 0.3) 1fr;
   grid-template-rows: $header-height 1fr;
 
@@ -34,6 +35,7 @@ body {
   // 幅がscreen-width-medium以下のデバイスでは1カラム
   @media screen and (max-width: $screen-width-medium) {
     display: block;
+    overflow-y: scroll;
 
     > header {
       grid-row: 1 / 2;
