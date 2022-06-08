@@ -70,11 +70,11 @@ const config: Configuration = {
         ],
       },
       {
-        test: /.ts$/,
+        test: /\.ts$/,
         use: 'ts-loader'
       },
       {
-        test: /.(svg|png|jpg|jpeg|gif)$/,
+        test: /\.(svg|png|jpg|jpeg|gif)$/,
         type: 'asset/resource'
       },
       {
