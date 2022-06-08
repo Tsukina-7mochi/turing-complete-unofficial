@@ -12,11 +12,9 @@ The documentation is all files below directory \`docs/pages\`.
 
 All rights of each document is reserved by the editor.
 
-## Application
+## The other part
 
-The application is all files in this repository and deployed server except below directory \`docs/pages\`.
-
-The application is published under license based on Apache-2.0 License, but only is free for non-commercial use.
+The other part is published under license based on Apache-2.0 License, but only is free for non-commercial use.
 
 
 

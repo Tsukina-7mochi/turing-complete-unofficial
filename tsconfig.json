@@ -1,14 +1,19 @@
 {
   "include": [
-    "app/**/*",
-    "tools/**/*"
+    "src/**/*",
+    "tools/**/*",
+    "webpack/**/*",
+    "webpack.common.ts",
+    "webpack.prod.ts",
+    "webpack.dev.ts"
   ],
   "exclude": [
-    "app/mathWorker.ts"
+    "src/search.ts",
+    "src/transitPage.ts",
   ],
   "compilerOptions": {
     "target": "ESNext",
-    "module": "amd",
+    "module": "commonjs",
     "sourceMap": true,
     "removeComments": true,
     "lib": [
