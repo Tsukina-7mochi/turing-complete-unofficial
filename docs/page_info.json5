@@ -3,7 +3,7 @@
     contents: [
       {
         text: 'トップページ',
-        href: '#',
+        href: 'index.html',
       },
       {
         text: 'ライセンス',

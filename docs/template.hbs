@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
-  <title>Turing Complete Unofficial</title>
-  <script src="app/main.bundle.js"></script>
+  <title>{{ title }}</title>
+  <script src="main.bundle.js"></script>
 </head>
 <body>
   <header>
@@ -18,16 +18,20 @@
       <a href="#">Turing Complete Unofficial</a>
     </div>
     <div class="search">
-      <form>
+      {{!-- <form>
         <input type="text">
         <button id="button-search">検索</button>
         <label for="button-search">
           <span class="material-icons md-36">&#xE8B6;</span>
         </label>
-      </form>
+      </form> --}}
     </div>
   </header>
-  <div class="menu"></div>
-  <main></main>
+  <div class="menu">
+    {{{ menu }}}
+  </div>
+  <main>
+    {{{ content }}}
+  </main>
 </body>
 </html>

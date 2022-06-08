@@ -1,10 +1,5 @@
 const strIsNumber = (token: string): boolean => /(0b|0x)[0-9]+/.test(token);
 
-interface replacer {
-  regexp: RegExp,
-  newSubstr: string
-}
-
 type blank = 0;
 type number_ = 1;
 type identifier = 2;
@@ -57,7 +52,7 @@ const codeSplitter = function*(code: string): Generator<token, void> {
 const assembly = function(code: string): string {
   const tokens = [...codeSplitter(code)];
 
-  console.log(tokens);
+  // console.log(tokens);
 
   // 整形・強調のための情報を収集
   const reserved = ['const', 'label'];

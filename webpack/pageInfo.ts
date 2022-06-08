@@ -1,5 +1,6 @@
-import axios from 'axios';
 import JSON5 from 'json5';
+import path from 'path';
+import fs from 'fs';
 
 interface Link {
   text: string,
@@ -30,25 +31,13 @@ interface PageInfo {
   }
 }
 
-const pageInfo: {
-  data: PageInfo | null,
-  ready: Promise<void>
-} = {
-  data: null,
-  ready: axios.get(`page_info.json5`, {
-    baseURL: window.location.origin + window.location.pathname
-  }).then((response) => {
-    pageInfo.data = JSON5.parse<PageInfo>(response.data);
-  }).catch((err) => {
-    throw Error('Failed to fetch or parse level info', err);
-  })
-}
+// TODO: pathの宣言をwebpack.common.jsと共通の場所に移す
+const docsPath  = path.join(__dirname, '../docs');
+const pageInfo = JSON5.parse<PageInfo>(fs.readFileSync(path.join(docsPath, 'page_info.json5')).toString());
 
 const toLinkName = (name: string): string | null => {
-  if(pageInfo.data !== null) {
-    if(name in pageInfo.data.alias) {
-      return pageInfo.data.alias[name];
-    }
+  if(name in pageInfo.alias) {
+    return pageInfo.alias[name];
   }
 
   return name.toLowerCase().replace(/[^a-z0-9_ -]/g, '').replace(/[ -]/g, '_');
