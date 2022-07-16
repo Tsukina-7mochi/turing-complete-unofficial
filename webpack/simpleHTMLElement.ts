@@ -44,14 +44,27 @@ class SimpleHTMLElement {
   }
 
   toString(): string {
-    const attributeStr = Object.keys(this.attributes).map((key) => `${key}="${this.attributes[key]}"`).join(' ');
-    const classStr = [...this.classList.list].join(' ');
+    let htmlStr = `<${this.tag}`;
 
-    if(this.children.length > 0) {
-      return `<${this.tag} class="${classStr}" ${attributeStr}>\n${this.children.map(child => child.toString()).join('\n')}\n</${this.tag}>`
+    if(this.classList.list.size > 0) {
+      const classStr = [...this.classList.list].join(' ');
+      htmlStr += ` class="${classStr}"`;
     }
 
-    return `<${this.tag} ${attributeStr}>`
+    if(Object.keys(this.attributes).length > 0) {
+      const attributeStr = Object.keys(this.attributes).map((key) => `${key}="${this.attributes[key]}"`).join(' ');
+      htmlStr += ' ' + attributeStr;
+    }
+
+    htmlStr += '>';
+
+    if(this.children.length > 0) {
+      htmlStr += this.children.map(child => child.toString()).join('');
+    }
+
+    htmlStr += `</${this.tag}>`;
+
+    return htmlStr;
   }
 }
 
