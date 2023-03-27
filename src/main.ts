@@ -1,8 +1,6 @@
 import './style/main.scss';
 import initMenu from './menu';
 import katex from 'katex';
-import axios from 'axios';
-// import search from './search';
 
 const initSpoiler = function(): void {
   // スポイラーのロジックを有効化
