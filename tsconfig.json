@@ -27,6 +27,7 @@
     "experimentalDecorators": true,
     "newLine": "LF",
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "resolveJsonModule": true
   }
 }
