@@ -1,43 +1,31 @@
 {
   "name": "turing-complete-unofficial",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "A comment and hint book of game Turing Complete in Japanese",
   "scripts": {
-    "build": "webpack --mode production --config ./webpack.prod.ts",
-    "dev": "webpack --mode development --config ./webpack.dev.ts",
-    "watch": "webpack --mode development --watch --config ./webpack.dev.ts"
   },
   "author": "Tsukina-7mochi",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "axios": "1.4.0",
     "katex": "0.16.8"
   },
   "devDependencies": {
     "@types/dompurify": "3.0.2",
     "@types/katex": "0.16.2",
-    "@types/marked": "5.0.1",
     "@types/node": "20.5.0",
-    "@types/webpack": "5.28.1",
     "@typescript-eslint/eslint-plugin": "6.4.0",
     "@typescript-eslint/parser": "6.4.0",
-    "css-loader": "6.8.1",
+    "esbuild": "0.19.2",
+    "esbuild-sass-plugin": "2.12.0",
     "eslint": "8.47.0",
-    "handlebars-loader": "1.7.3",
-    "html-webpack-plugin": "5.5.3",
+    "eslint-config-prettier": "9.0.0",
+    "glob": "10.3.3",
     "isomorphic-dompurify": "1.8.0",
     "json5": "2.2.3",
     "license-checker": "25.0.1",
     "markdown-wasm": "1.2.0",
-    "sass": "1.66.0",
-    "sass-loader": "13.3.2",
-    "style-loader": "3.3.3",
-    "ts-loader": "9.4.4",
+    "prettier": "3.0.2",
     "ts-node": "10.9.1",
-    "typescript": "5.1.6",
-    "webpack": "5.88.2",
-    "webpack-cli": "5.1.4",
-    "webpack-merge": "5.9.0"
+    "typescript": "5.1.6"
   }
 }
