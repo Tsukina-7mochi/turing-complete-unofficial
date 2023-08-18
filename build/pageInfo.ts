@@ -30,13 +30,7 @@ interface PageInfo {
   };
 }
 
-// TODO: pathの宣言をwebpack.common.jsと共通の場所に移す
-const docsPath = path.join(__dirname, '../docs');
-const pageInfo = JSON5.parse<PageInfo>(
-  fs.readFileSync(path.join(docsPath, 'page_info.json5')).toString()
-);
-
-const toLinkName = (name: string): string | null => {
+const toLinkName = (pageInfo: PageInfo, name: string) => {
   if (name in pageInfo.alias) {
     return pageInfo.alias[name];
   }
@@ -47,4 +41,5 @@ const toLinkName = (name: string): string | null => {
     .replace(/[ -]/g, '_');
 };
 
-export { pageInfo, toLinkName, Link, Menu, PageInfo };
+export type { Link, Menu, Page, PageInfo };
+export { toLinkName };
