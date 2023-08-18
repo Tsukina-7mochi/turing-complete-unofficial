@@ -2,8 +2,7 @@
   "name": "turing-complete-unofficial",
   "version": "1.0.0",
   "description": "A comment and hint book of game Turing Complete in Japanese",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Tsukina-7mochi",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {

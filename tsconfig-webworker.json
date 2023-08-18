@@ -1,18 +1,11 @@
 {
-  "include": [
-    "app/mathWorker.ts"
-  ],
+  "include": ["app/mathWorker.ts"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "amd",
     "sourceMap": true,
     "removeComments": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext",
-      "WebWorker"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
     "allowJs": true,
     "strict": true,
     "noImplicitThis": true,
@@ -26,6 +19,6 @@
     "experimentalDecorators": true,
     "newLine": "LF",
     "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strictNullChecks": true
   }
 }

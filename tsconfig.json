@@ -7,20 +7,13 @@
     "webpack.prod.ts",
     "webpack.dev.ts"
   ],
-  "exclude": [
-    "src/search.ts",
-    "src/transitPage.ts",
-  ],
+  "exclude": ["src/search.ts", "src/transitPage.ts"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "commonjs",
     "sourceMap": true,
     "removeComments": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "strict": true,
     "noImplicitThis": true,
@@ -34,6 +27,6 @@
     "experimentalDecorators": true,
     "newLine": "LF",
     "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strictNullChecks": true
   }
 }

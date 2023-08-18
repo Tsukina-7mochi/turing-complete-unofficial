@@ -7,6 +7,6 @@ export default merge<Configuration>(commonConfig, {
   devtool: 'eval',
   watchOptions: {
     ignored: /(node_modules)/,
-    poll: true
-  }
+    poll: true,
+  },
 });

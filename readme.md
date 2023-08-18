@@ -18,16 +18,19 @@
 ## バンドル
 
 開発ビルド
+
 ```shell
 $npm run dev
 ```
 
 watch
+
 ```shell
 $npm run watch
 ```
 
 本番ビルド
+
 ```shell
 $npm run build
 ```
@@ -48,7 +51,7 @@ $npm run build
 
 - `div.spoiler`: スポイラーとしてデフォルト状態で隠れて表示されます。
 - `table.truth`: 真理値表となります
-  - ```markdown
+  - ````markdown
         ```truth_table
             入力1, 入力2, 出力
             F, F, F
@@ -56,7 +59,7 @@ $npm run build
             F, T, T
             T, T, T
         ```
-    ```
+    ````
     のように記述できるようにしました
 
 ## リンクについて

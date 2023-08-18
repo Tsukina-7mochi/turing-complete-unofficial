@@ -8,7 +8,6 @@
 
 迷路を解く方法はいくつもありますが、実装が容易な右手法などを採用すると良いでしょう。
 
-
 ## 解答
 
 <div class="spoiler-controller material-icons">&#xE5CF;開く</div>

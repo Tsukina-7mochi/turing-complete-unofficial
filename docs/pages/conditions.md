@@ -8,16 +8,16 @@
 
 ビットと条件の対応は以下のものです。
 
-|ビット3|ビット2|ビット1|条件|
-|---|---|---|---|
-|<span class="F">OFF</span>|<span class="F">OFF</span>|<span class="F">OFF</span>|常に偽|
-|<span class="F">OFF</span>|<span class="F">OFF</span>|<span class="T">ON</span>|値 ＝ 0|
-|<span class="F">OFF</span>|<span class="T">ON</span>|<span class="F">OFF</span>|値 ＜ 0|
-|<span class="F">OFF</span>|<span class="T">ON</span>|<span class="T">ON</span>|値 ≦ 0|
-|<span class="T">ON</span>|<span class="F">OFF</span>|<span class="F">OFF</span>|常に真|
-|<span class="T">ON</span>|<span class="F">OFF</span>|<span class="T">ON</span>|値 ≠ 0|
-|<span class="T">ON</span>|<span class="T">ON</span>|<span class="F">OFF</span>|値 ≧ 0|
-|<span class="T">ON</span>|<span class="T">ON</span>|<span class="T">ON</span>|値 ＞ 0|
+| ビット3                    | ビット2                    | ビット1                    | 条件    |
+| -------------------------- | -------------------------- | -------------------------- | ------- |
+| <span class="F">OFF</span> | <span class="F">OFF</span> | <span class="F">OFF</span> | 常に偽  |
+| <span class="F">OFF</span> | <span class="F">OFF</span> | <span class="T">ON</span>  | 値 ＝ 0 |
+| <span class="F">OFF</span> | <span class="T">ON</span>  | <span class="F">OFF</span> | 値 ＜ 0 |
+| <span class="F">OFF</span> | <span class="T">ON</span>  | <span class="T">ON</span>  | 値 ≦ 0  |
+| <span class="T">ON</span>  | <span class="F">OFF</span> | <span class="F">OFF</span> | 常に真  |
+| <span class="T">ON</span>  | <span class="F">OFF</span> | <span class="T">ON</span>  | 値 ≠ 0  |
+| <span class="T">ON</span>  | <span class="T">ON</span>  | <span class="F">OFF</span> | 値 ≧ 0  |
+| <span class="T">ON</span>  | <span class="T">ON</span>  | <span class="T">ON</span>  | 値 ＞ 0 |
 
 ## 攻略
 
@@ -30,9 +30,9 @@
 
 まず、ビット3が<span class="F">OFF</span>の場合を考えると、以下のことがわかります。
 
-* ビット1が<span class="T">ON</span>、かつ値 ＝ 0 のとき、出力は<span class="T">ON</span>になる。
-* ビット2が<span class="T">ON</span>、かつ値 ＜ 0 のとき、出力は<span class="T">ON</span>になる。
-* これらの条件に当てはまらないとき、出力は<span class="F">OFF</span>になる。
+- ビット1が<span class="T">ON</span>、かつ値 ＝ 0 のとき、出力は<span class="T">ON</span>になる。
+- ビット2が<span class="T">ON</span>、かつ値 ＜ 0 のとき、出力は<span class="T">ON</span>になる。
+- これらの条件に当てはまらないとき、出力は<span class="F">OFF</span>になる。
 
 さらに、ビット3が<span class="T">ON</span>の場合は、
 ビット3が<span class="F">OFF</span>の場合の条件の反転になっていることがわかります。  

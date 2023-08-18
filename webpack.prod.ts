@@ -4,5 +4,5 @@ import commonConfig from './webpack.common';
 
 export default merge<Configuration>(commonConfig, {
   mode: 'production',
-  devtool: 'source-map'
+  devtool: 'source-map',
 });

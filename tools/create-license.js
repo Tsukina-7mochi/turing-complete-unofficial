@@ -4,7 +4,9 @@ const fs = require('fs');
 const list = JSON.parse(fs.readFileSync('tools/license-list.json'));
 const file = fs.openSync('license', 'w');
 
-fs.writeSync(file, `# License
+fs.writeSync(
+  file,
+  `# License
 
 ## Documentation
 
@@ -227,9 +229,10 @@ limitations under the License.
 
 ## Licenses of dependencies
 
-`);
+`
+);
 
-for(const key in list) {
+for (const key in list) {
   fs.writeSync(file, `\n\n### ${key}\n`);
   fs.writeSync(file, `\npublished by ${list[key].publisher}\n`);
   fs.writeSync(file, fs.readFileSync(list[key].licenseFile));

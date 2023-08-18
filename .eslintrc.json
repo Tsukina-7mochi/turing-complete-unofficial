@@ -18,8 +18,7 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "globals": {
-  },
+  "globals": {},
   "rules": {
     "no-unused-vars": "warn",
     "@typescript-eslint/no-extra-semi": "off",

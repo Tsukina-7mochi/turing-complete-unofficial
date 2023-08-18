@@ -10,7 +10,7 @@ class ClassList {
   }
 
   toggle(className: string): void {
-    if(this.list.has(className)) {
+    if (this.list.has(className)) {
       this.remove(className);
     } else {
       this.add(className);
@@ -18,7 +18,7 @@ class ClassList {
   }
 
   replace(oldName: string, newName: string): void {
-    if(this.list.has(oldName)) {
+    if (this.list.has(oldName)) {
       this.remove(oldName);
       this.add(newName);
     }
@@ -27,7 +27,7 @@ class ClassList {
 
 class SimpleHTMLElement {
   tag: string;
-  attributes: {[key: string]: string} = {};
+  attributes: { [key: string]: string } = {};
   children: (SimpleHTMLElement | string)[] = [];
   classList: ClassList = new ClassList();
 
@@ -46,20 +46,22 @@ class SimpleHTMLElement {
   toString(): string {
     let htmlStr = `<${this.tag}`;
 
-    if(this.classList.list.size > 0) {
+    if (this.classList.list.size > 0) {
       const classStr = [...this.classList.list].join(' ');
       htmlStr += ` class="${classStr}"`;
     }
 
-    if(Object.keys(this.attributes).length > 0) {
-      const attributeStr = Object.keys(this.attributes).map((key) => `${key}="${this.attributes[key]}"`).join(' ');
+    if (Object.keys(this.attributes).length > 0) {
+      const attributeStr = Object.keys(this.attributes)
+        .map((key) => `${key}="${this.attributes[key]}"`)
+        .join(' ');
       htmlStr += ' ' + attributeStr;
     }
 
     htmlStr += '>';
 
-    if(this.children.length > 0) {
-      htmlStr += this.children.map(child => child.toString()).join('');
+    if (this.children.length > 0) {
+      htmlStr += this.children.map((child) => child.toString()).join('');
     }
 
     htmlStr += `</${this.tag}>`;

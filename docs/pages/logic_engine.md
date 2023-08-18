@@ -6,12 +6,12 @@
 
 行う論理演算は、3個目の入力 (CODE) の値によって以下のように選択されます。
 
-|CODE|論理演算|
-|---|---|
-|0|OR|
-|1|NAND|
-|2|NOR|
-|3|AND|
+| CODE | 論理演算 |
+| ---- | -------- |
+| 0    | OR       |
+| 1    | NAND     |
+| 2    | NOR      |
+| 3    | AND      |
 
 ## 攻略
 
@@ -50,9 +50,9 @@ F,F,T
 
 よって、以下のような回路を構築すればよいです。
 
-* OR演算を基本とする。
-* CODEの1ビット目が<span class="T">ON</span>なら、入力を反転させる。<span class="F">OFF</span>なら反転させない。
-* CODEの2ビット目が<span class="T">ON</span>なら、出力を反転させる。<span class="F">OFF</span>なら反転させない。
+- OR演算を基本とする。
+- CODEの1ビット目が<span class="T">ON</span>なら、入力を反転させる。<span class="F">OFF</span>なら反転させない。
+- CODEの2ビット目が<span class="T">ON</span>なら、出力を反転させる。<span class="F">OFF</span>なら反転させない。
 
 ![](https://gist.githubusercontent.com/mikecat/b64b484ee0bfa969cc1e738af31e9e58/raw/32cbe409517f5d48427466cf97408e38e220e7fe/20220415213033_1.jpg)
 
