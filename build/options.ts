@@ -25,19 +25,21 @@ const hbsTemplateText = decoder.decode(hbsTemplateData);
 const hbsTemplate = Handlebars.compile(hbsTemplateText);
 
 const menuHTML = renderMenu(pageInfo);
-const pages = Object.keys(pageInfo.pages).map((pageName) => {
-  const page = pageInfo.pages[pageName];
-  const filePath = path.join(docsPath, 'pages', page.filename);
+const pages = Object.keys(pageInfo.pages)
+  .map((pageName) => {
+    const page = pageInfo.pages[pageName];
+    const filePath = path.join(docsPath, 'pages', page.filename);
 
-  return {
-    name: pageName,
-    path: filePath,
-    outPath: path.join(destPath, `${toLinkName(pageInfo, pageName)}.html`),
-  }
-}).filter((page) => fs.existsSync(page.path));
+    return {
+      name: pageName,
+      path: filePath,
+      outPath: path.join(destPath, `${toLinkName(pageInfo, pageName)}.html`),
+    };
+  })
+  .filter((page) => fs.existsSync(page.path));
 type ArrayItem<T> = T extends (infer S)[] ? S : never;
 const pageFilePathMap = new Map<string, ArrayItem<typeof pages>>();
-for(const page of pages) {
+for (const page of pages) {
   pageFilePathMap.set(page.path, page);
 }
 
@@ -52,28 +54,34 @@ const pageOptions = (): esbuild.BuildOptions[] => {
       }),
       loaderHookPlugin({
         paths: pages.map((page) => page.path),
-        preprocess: (async (path, content) => {
+        preprocess: async (path, content) => {
           const pageName = pageFilePathMap.get(path)?.name as string;
-          return renderMarkdown(pageInfo, pageName, content, menuHTML, hbsTemplate)
-        }),
+          return renderMarkdown(
+            pageInfo,
+            pageName,
+            content,
+            menuHTML,
+            hbsTemplate
+          );
+        },
         loader: 'copy',
-        log: true
+        log: true,
       }),
     ],
   }));
-}
+};
 
 const srcOption = (dev?: boolean): esbuild.BuildOptions => ({
   entryPoints: [
     { in: path.join(srcPath, 'main.ts'), out: 'main.bundle' },
     {
       in: path.join(srcPath, 'mathWorker.ts'),
-      out: 'mathWorker.bundle'
+      out: 'mathWorker.bundle',
     },
     {
       in: path.join(srcPath, 'style', 'main.scss'),
-      out: 'main.bundle'
-    }
+      out: 'main.bundle',
+    },
   ],
   outdir: destPath,
   bundle: true,
@@ -88,7 +96,7 @@ const srcOption = (dev?: boolean): esbuild.BuildOptions => ({
     sassPlugin(),
   ],
   minify: !dev,
-  sourcemap: dev ? 'inline' : 'linked'
+  sourcemap: dev ? 'inline' : 'linked',
 });
 
 export { pageOptions, srcOption };

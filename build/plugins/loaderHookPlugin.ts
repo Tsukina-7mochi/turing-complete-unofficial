@@ -3,36 +3,39 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 interface Option {
-  paths: (string | RegExp)[],
-  loader: esbuild.Loader,
-  limitToEntry?: boolean,
-  preprocess?: (path: string, content: string) => string | Promise<string>,
-  encoding?: BufferEncoding,
-  log?: boolean,
+  paths: (string | RegExp)[];
+  loader: esbuild.Loader;
+  limitToEntry?: boolean;
+  preprocess?: (path: string, content: string) => string | Promise<string>;
+  encoding?: BufferEncoding;
+  log?: boolean;
 }
 
 const pluginNamespace = 'net.ts7m.esbuild-plugin-loader-hook';
 
-const stringToRegExpFullMatch = function(str: string){
+const stringToRegExpFullMatch = function (str: string) {
   const escapedStr = str.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&');
   return new RegExp(`^${escapedStr}\$`);
-}
+};
 
 const loaderHookPlugin = (options: Option): esbuild.Plugin => ({
   name: 'copy-hook-plugin',
   setup(build) {
-    for(const targetPath of options.paths) {
-      const filter = (targetPath instanceof RegExp ? targetPath : stringToRegExpFullMatch(targetPath));
+    for (const targetPath of options.paths) {
+      const filter =
+        targetPath instanceof RegExp
+          ? targetPath
+          : stringToRegExpFullMatch(targetPath);
 
       build.onResolve({ filter }, (args) => {
-        if(options.limitToEntry && args.kind !== 'entry-point') {
+        if (options.limitToEntry && args.kind !== 'entry-point') {
           return;
         }
 
         return {
           path: args.path,
-          namespace: pluginNamespace
-        }
+          namespace: pluginNamespace,
+        };
       });
 
       build.onLoad({ filter, namespace: pluginNamespace }, async (args) => {
@@ -42,7 +45,7 @@ const loaderHookPlugin = (options: Option): esbuild.Plugin => ({
           fs.mkdir(dirname, { recursive: true }),
         ]);
 
-        if(options.preprocess !== undefined) {
+        if (options.preprocess !== undefined) {
           contents = await options.preprocess(
             args.path,
             contents.toString(options.encoding)
@@ -51,11 +54,11 @@ const loaderHookPlugin = (options: Option): esbuild.Plugin => ({
 
         return {
           contents,
-          loader: options.loader
+          loader: options.loader,
         };
       });
     }
-  }
+  },
 });
 
 export default loaderHookPlugin;

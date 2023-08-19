@@ -4,16 +4,16 @@ import url from 'node:url';
 import sass from 'sass';
 
 interface Option {
-  compileOptions: sass.Options<"async">
+  compileOptions: sass.Options<'async'>;
 }
 
-const urlToString = function(url_: URL) {
-  if(url_.protocol !== 'file') {
+const urlToString = function (url_: URL) {
+  if (url_.protocol !== 'file') {
     return url_.toString();
   }
 
   return url.fileURLToPath(url_);
-}
+};
 
 /**
  * A plugin to process `.sass` and `.scss` files.
@@ -30,9 +30,9 @@ const sassPlugin = (option?: Option): esbuild.Plugin => ({
         contents: compileResult.css,
         loader: 'css',
         watchFiles: compileResult.loadedUrls.map(urlToString),
-      }
+      };
     });
-  }
+  },
 });
 
 export default sassPlugin;

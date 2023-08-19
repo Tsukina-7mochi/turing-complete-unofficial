@@ -1,8 +1,8 @@
 import * as esbuild from 'esbuild';
 
 interface Options {
-  rebuildOnly?: boolean,
-  buildName?: string,
+  rebuildOnly?: boolean;
+  buildName?: string;
 }
 
 const getTimeString = () => {
@@ -15,9 +15,10 @@ const getTimeString = () => {
  */
 const buildResultPlugin = (options?: Options): esbuild.Plugin => {
   const rebuildOnly = options?.rebuildOnly === true;
-  const buildName = typeof options?.buildName === 'string'
-    ? ` \x1b[1m${options.buildName}\x1b[0m`
-    : '';
+  const buildName =
+    typeof options?.buildName === 'string'
+      ? ` \x1b[1m${options.buildName}\x1b[0m`
+      : '';
   let startTime = 0;
   let endTime = 0;
   let isFirstTime = true;
@@ -29,7 +30,7 @@ const buildResultPlugin = (options?: Options): esbuild.Plugin => {
         startTime = Date.now();
       });
       build.onEnd((result) => {
-        if(isFirstTime && rebuildOnly) {
+        if (isFirstTime && rebuildOnly) {
           isFirstTime = false;
           return;
         }
@@ -39,7 +40,9 @@ const buildResultPlugin = (options?: Options): esbuild.Plugin => {
 
         if (result.errors.length > 0) {
           const numErrors = result.errors.length;
-          console.log(`${timeText} Build${buildName} failed with ${numErrors} errors.`);
+          console.log(
+            `${timeText} Build${buildName} failed with ${numErrors} errors.`
+          );
         } else {
           console.log(
             `\x1b[1m${getTimeString()}\x1b[0m Build${buildName} succeeded in ${

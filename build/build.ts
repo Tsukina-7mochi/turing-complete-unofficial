@@ -25,7 +25,7 @@ for (const arg of process.argv) {
 (async () => {
   const ctxs = await Promise.all([
     esbuild.context(srcOption(devFlag)),
-    ...pageOptions().map(option => esbuild.context(option))
+    ...pageOptions().map((option) => esbuild.context(option)),
   ]);
 
   if (devFlag && watchFlag) {
