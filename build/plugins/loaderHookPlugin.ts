@@ -6,7 +6,7 @@ interface Option {
   paths: (string | RegExp)[],
   loader: esbuild.Loader,
   limitToEntry?: boolean,
-  preprocess?: (path: string, content: string) => string,
+  preprocess?: (path: string, content: string) => string | Promise<string>,
   encoding?: BufferEncoding,
   log?: boolean,
 }
@@ -43,7 +43,7 @@ const loaderHookPlugin = (options: Option): esbuild.Plugin => ({
         ]);
 
         if(options.preprocess !== undefined) {
-          contents = options.preprocess(
+          contents = await options.preprocess(
             args.path,
             contents.toString(options.encoding)
           );
