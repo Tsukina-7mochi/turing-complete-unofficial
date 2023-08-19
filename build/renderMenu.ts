@@ -1,17 +1,10 @@
 import { PageInfo, Menu, Link } from './pageInfo';
 import SimpleHTMLElement from './simpleHTMLElement';
+import { createElement, createList } from './simpleHTMLElementUtil';
 
-const createListItemElement = function(content: string | SimpleHTMLElement) {
-  const elItem = new SimpleHTMLElement('li');
-  elItem.appendChild(content);
-  return elItem;
-}
-
-const createLinkElement = function(href: string, content: string | SimpleHTMLElement) {
-  const elLink = new SimpleHTMLElement('a');
-  elLink.setAttribute('href', href);
-  elLink.appendChild(content);
-  return elLink;
+const createLinkElement = function(href: string, content: string | SimpleHTMLElement, isPageLink = false) {
+  const className = isPageLink ? 'page-link' : '';
+  return createElement('a', content, className, { href });
 }
 
 const renderMenuReclusive = function(
@@ -20,14 +13,11 @@ const renderMenuReclusive = function(
   titleLevel: number
 ): SimpleHTMLElement[] {
   const elements: SimpleHTMLElement[] = [];
-  const titleElementName = `h${Math.max(1, Math.min(titleLevel, 6))}`;
+  const titleTag = `h${Math.max(1, Math.min(titleLevel, 6))}`;
 
   //// if menu has title, render title element ////
   if(typeof menu.title === 'string') {
-    const elTitle = new SimpleHTMLElement(titleElementName);
-    elTitle.classList.add('menu-title');
-    elTitle.appendChild(menu.title);
-
+    const elTitle = createElement(titleTag, menu.title, 'menu-title');
     if(menu.collapsible) {
       elTitle.classList.add('collapsible-controller');
       elTitle.children.push(`<span class="material-icons">&#xE5CF;</span>`);
@@ -41,13 +31,11 @@ const renderMenuReclusive = function(
   if(menu.collapsible) {
     elContentRoot.classList.add('collapsible');
   }
-  const groupedItems: SimpleHTMLElement[] = [];
+  const groupedItems: (SimpleHTMLElement | string)[] = [];
   // make list of grouped items and append them to content root
   // then clear grouped item list
-  const flushGroupedItems = function(elContentRoot, groupedItems) {
-    const elList = new SimpleHTMLElement('ul');
-    groupedItems.forEach((item) => elList.appendChild(item));
-    elContentRoot.appendChild(elList);
+  const flushGroupedItems = function() {
+    elContentRoot.appendChild(createList(groupedItems));
     groupedItems.splice(0, groupedItems.length);
   }
 
@@ -56,22 +44,19 @@ const renderMenuReclusive = function(
       const page = pageInfo.pages[content];
       if(page === undefined) {
         // content is just a text
-        groupedItems.push(createListItemElement(content));
+        groupedItems.push(content);
       } else {
         // content is a link to page titled with its value
-        const elLink = createLinkElement(`${content}.html`, page.title);
-        elLink.classList.add('page-link');
-        const elItem = createListItemElement(elLink);
-        groupedItems.push(elItem);
+        const elLink = createLinkElement(`${content}.html`, page.title, true);
+        groupedItems.push(elLink);
       }
     } else if('href' in content && 'text' in content) {
       // content is a link
       const elLink = createLinkElement(content.href, content.text);
-      const elItem = createListItemElement(elLink);
-      groupedItems.push(elItem);
+      groupedItems.push(elLink);
     } else if('contents' in content) {
       if(groupedItems.length > 0) {
-        flushGroupedItems(elContentRoot, groupedItems);
+        flushGroupedItems();
       }
       const menuElements = renderMenuReclusive(
         pageInfo,
@@ -86,14 +71,17 @@ const renderMenuReclusive = function(
     }
   }
   if(groupedItems.length > 0) {
-    flushGroupedItems(elContentRoot, groupedItems);
+    flushGroupedItems();
   }
+
+  elements.push(elContentRoot);
 
   return elements;
 }
 
 const renderMenu = function(pageInfo: PageInfo): string {
   const menu = renderMenuReclusive(pageInfo, pageInfo.menu, 1);
+  console.log(menu);
   return menu.map((element) => element.toString()).join('');
 }
 
