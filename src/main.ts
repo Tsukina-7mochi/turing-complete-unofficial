@@ -1,4 +1,3 @@
-import './style/main.scss';
 import initMenu from './menu';
 import katex from 'katex';
 

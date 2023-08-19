@@ -1,5 +1,5 @@
 import * as esbuild from 'esbuild';
-import option from './options';
+import { pageOptions, srcOption } from './options';
 
 let devFlag = false;
 let watchFlag = false;
@@ -22,23 +22,24 @@ for (const arg of process.argv) {
   }
 }
 
-const config = option(devFlag);
-
 (async () => {
-  const ctx = await esbuild.context(config);
+  const ctxs = await Promise.all([
+    esbuild.context(srcOption(devFlag)),
+    ...pageOptions().map(option => esbuild.context(option))
+  ]);
 
   if (devFlag && watchFlag) {
-    await ctx.watch();
+    await Promise.all(ctxs.map((ctx) => ctx.watch()));
     console.log('Watching...');
 
     // eslint-disable-next-line
     for await (const _ of process.stdin) {
       // manually rebuild
-      await ctx.rebuild();
+      await Promise.all(ctxs.map((ctx) => ctx.rebuild()));
     }
   } else {
-    await ctx.rebuild();
+    await Promise.all(ctxs.map((ctx) => ctx.rebuild()));
   }
 
-  await ctx.dispose();
+  await Promise.all(ctxs.map((ctx) => ctx.dispose()));
 })();
