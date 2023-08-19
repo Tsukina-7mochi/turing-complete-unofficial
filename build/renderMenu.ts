@@ -81,7 +81,6 @@ const renderMenuReclusive = function(
 
 const renderMenu = function(pageInfo: PageInfo): string {
   const menu = renderMenuReclusive(pageInfo, pageInfo.menu, 1);
-  console.log(menu);
   return menu.map((element) => element.toString()).join('');
 }
 
