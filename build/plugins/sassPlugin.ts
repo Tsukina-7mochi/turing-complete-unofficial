@@ -1,6 +1,5 @@
 import * as esbuild from 'esbuild';
 import path from 'node:path';
-import fs from 'node:fs/promises';
 import url from 'node:url';
 import sass from 'sass';
 
@@ -22,12 +21,14 @@ const urlToString = function(url_: URL) {
 const sassPlugin = (option?: Option): esbuild.Plugin => ({
   name: 'sass-plugin',
   setup(build) {
-    build.onResolve({ filter: /\.(scss|sass)$/ }, async (args) => {
+    build.onLoad({ filter: /\.(scss|sass)$/ }, async (args) => {
+      const filePath = path.resolve(args.path);
       const compileOption = option?.compileOptions ?? {};
-      const compileResult = await sass.compileAsync(args.path, compileOption);
+      const compileResult = await sass.compileAsync(filePath, compileOption);
 
       return {
         contents: compileResult.css,
+        loader: 'css',
         watchFiles: compileResult.loadedUrls.map(urlToString),
       }
     });
